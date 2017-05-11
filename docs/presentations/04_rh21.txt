@@ -1,0 +1,5 @@
+Role:
+I am a student in this Ruby class.
+
+Nb: This document will be updated soon until I know my exact role in this project.
+
