@@ -1,0 +1,2 @@
+I am a student in this class
+I will take the role of developing a chat application
