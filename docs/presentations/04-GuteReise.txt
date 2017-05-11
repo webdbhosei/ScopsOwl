@@ -1,0 +1,3 @@
+Hi. This text is explosion of my part in this class project.
+
+I will take the role of Dropbox (filesever) application.
