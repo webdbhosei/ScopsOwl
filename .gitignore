@@ -17,5 +17,7 @@
 !/log/.keep
 !/tmp/.keep
 
+ToDo.txt
+
 # Ignore Byebug command history file.
 .byebug_history
