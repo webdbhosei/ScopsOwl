@@ -21,7 +21,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'therubyracer', platforms: :ruby
 
 # Internationalization
-gem 'i18n-tasks'
+# gem 'i18n-tasks'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
