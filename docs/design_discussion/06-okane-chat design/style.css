@@ -1,0 +1,68 @@
+@import url("bootstrap/css/bootstrap.min.css");
+@font-face {
+    font-family: glyphicons;
+    src: url(bootstrap/fonts/glyphicons-halflings-regular.woff);
+}
+body{
+  background-color: #9E9E9E;
+}
+.chat-canvas{
+  overflow: hidden;
+  width: 100%;
+  margin: 10% auto 0 auto;
+  padding-top: 2%;
+  background-color: #212121;
+  border-radius: 7px;
+}
+.chat-canvas h1{
+  color: #fff;
+  margin: 0 auto;
+  text-align: center;
+  font-family: sans-serif;
+}
+.chat-canvas h1::before{
+  font-family: 'glyphicons';
+  content: "\e257";
+  margin-right: 32%;
+}
+.chat-canvas h1::after{
+  font-family: 'glyphicons';
+  content: "\e123";
+  margin-left: 32%;
+}
+.profile-pic{
+  height: 120px;
+  width: 120px;
+  margin: 0 auto;
+  border-radius: 50%;
+  margin: 5% auto 0 auto;
+  background: url('kim.jpg') no-repeat;
+  background-size: left;
+}
+.chat-canvas article{
+  width: 70%;
+  min-height: 400px;
+  overflow-y: auto;
+  overflow-x:hidden;
+  margin: 0 auto 0 auto;
+  background-color: #9E9E9E;
+}
+.chat-canvas p{
+color: #fff;
+padding: 20px 0 0 20px;
+font-size: 29px;
+font-family:cursive;
+}
+.send-btn{
+  height: 50px;
+  width: 50px;
+  margin: -25px auto 25px auto;
+  background-color: #00C853;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  font-size: 24px;
+}
+.test{
+}
