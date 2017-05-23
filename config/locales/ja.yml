@@ -5,6 +5,7 @@ ja:
   welcome:
     index:
       lecturers: "教員の見本"
+      rh21_qpage: "RH21のQPage"
   # Common Original messages
   activerecord:
     errors:
