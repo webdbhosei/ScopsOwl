@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+
   get 'chat/index'
   post 'chat/index'
+
+  get 'rh21_qpage/index'
 
   get 'ikuo/sample'
 
