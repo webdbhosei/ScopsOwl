@@ -9,19 +9,19 @@
   </head>
 
   <body>
-    <div id="container">>
+    <div class="container">
     	<div id="header">
-  	  <%= image_tag "bannar1.gif"  %>
-  	  <%= render :partial => "shared/menu_bar" %>
+    	  <%= image_tag "banner1.gif"  %>
+    	  <%= render :partial => "shared/menu_bar" %>
     	</div>
-    	<div id="left">
-  	  <%= yield %>
+    	<div id="left" class="row">
+  	    <%= yield %>
     	</div>
     	<div id="right">
-  	  <%= render :partial => "shared/right_bar" %>
+  	    <%= render :partial => "shared/right_bar" %>
     	</div>
     	<div id="footer">
-  	  <%= render :partial => "shared/footer" %>
+  	    <%= render :partial => "shared/footer" %>
     	</div>
     </div>
   </body>
