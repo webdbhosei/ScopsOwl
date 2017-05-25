@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'guterise_fileserver/index'
+
   get 'chat/index'
   post 'chat/index'
 
