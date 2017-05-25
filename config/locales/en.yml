@@ -25,6 +25,7 @@ en:
   welcome:
     index:
       lecturers: "Lecturer's Sample"
+      rh21_qpage: "RH21's QPage"
   # Common Original messages
   activerecord:
     errors:
