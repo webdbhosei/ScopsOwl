@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   post 'chat/index'
 
   get 'ikuo/sample'
+  
+  get 'hitme/index'
 
   get 'welcome/index'
 
