@@ -8,7 +8,6 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def put_message (msg)
-    usr = SmplChatsController.write(msg['data'])
-    ChatChannel.broadcast_to('message', usr + ":" + msg['data'] )
+    ChatChannel.broadcast_to('message', msg['data'] )
   end
 end
