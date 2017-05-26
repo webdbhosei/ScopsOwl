@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'rh21_qpage/index'
 
   get 'ikuo/sample'
+  
+  get 'hitme/index'
 
   get 'welcome/index'
 
