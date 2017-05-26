@@ -6,6 +6,8 @@ module ApplicationHelper
       raw "<span class=\'current_page\'>" + item[:name] + "</span>"
     elsif item[:disabled]
       raw "<span class=\'disabled\'>" + item[:name] + "(not ready)</span>"
+    elsif item[:method]
+      link_to(item[:name], item[:link], :method=>item[:method])
     else
       link_to(item[:name], item[:link])
     end

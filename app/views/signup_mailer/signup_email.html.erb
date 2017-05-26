@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to WEB+DB Hosei's ScopsOwl Project Web Page</h1>
+    <%= @user.email %><br />
+    <p>
+      You have successfully registered to the Web Site. <br />
+      However, your handle name is not registered.  So, click the link below to
+      register your handle name. <br />
+      </p>
+      <p>
+      Click: <a href="<%= @url %>users/<%= @user.id %>/edit"
+        >'<%= @url %>users/<%= @user.id %>/edit'</a><br />
+    </p>
+    <p>We are waiting you to join our site.</p>
+  </body>
+</html>
