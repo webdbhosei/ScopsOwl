@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Smpl Chats</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @smpl_chats.each do |smpl_chat| %>
+      <tr>
+        <td><%= smpl_chat.user_id %></td>
+        <td><%= smpl_chat.content %></td>
+        <td><%= link_to 'Show', smpl_chat %></td>
+        <td><%= link_to 'Edit', edit_smpl_chat_path(smpl_chat) %></td>
+        <td><%= link_to 'Destroy', smpl_chat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Smpl Chat', new_smpl_chat_path %>

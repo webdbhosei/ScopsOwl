@@ -27,9 +27,25 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.perform_caching = false
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'webdb.hosei@signalysis.co.jp'}
+  config.action_mailer.default_url_options = { host: '192.168.11.3:3000' }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.signalysis.co.jp', # When Google, smtp.google.com
+    port:                 587,
+    domain:               'signalysis.co.jp',
+    user_name:            'webdb.hosei@signalysis.co.jp',
+    password:             'Hosei123',  # When Google, you need to aquire 2nd PW
+    authentication:       'login',   # When Google, "plain"
+    enable_starttls_auto: false  }   # When Google, true
+  # -------------- Mailerの設定(Signalysisバージョン)、ここまで ----------------
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

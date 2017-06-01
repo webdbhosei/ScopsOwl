@@ -1,0 +1,2 @@
+module SmplChatsHelper
+end

@@ -1,0 +1,9 @@
+<h1>Chat#index</h1>
+<p>Find me in app/views/chat/index.html.erb</p>
+
+<%= form_tag 'index', id: 'message' do %>
+  <%= text_field_tag 'body' %>
+<% end %>
+
+<ul id="message-list">
+</ul>

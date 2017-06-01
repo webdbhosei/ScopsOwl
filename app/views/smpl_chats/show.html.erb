@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @smpl_chat.user_id %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @smpl_chat.content %>
+</p>
+
+<%= link_to 'Edit', edit_smpl_chat_path(@smpl_chat) %> |
+<%= link_to 'Back', smpl_chats_path %>
