@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'eba/index'
+  get 'chat2/index'
   get 'okane/index'
 
   resources :smpl_chats
