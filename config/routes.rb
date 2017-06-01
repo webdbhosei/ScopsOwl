@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'eba/index'
+
+  get 'chat2/index'
+
   get 'ikuo/sample'
 
   get 'welcome/index'
