@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'okane/index'
+
   resources :smpl_chats
   devise_for :users
   resources :users
