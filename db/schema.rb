@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526105959) do
+ActiveRecord::Schema.define(version: 20170607094228) do
+
+  create_table "ik_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ik_memos", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "ik_category_id"
+  end
 
   create_table "smpl_chats", force: :cascade do |t|
     t.integer  "user_id"
