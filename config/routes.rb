@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :ik_categories
+  resources :ik_memos
+  get 'eba/index'
+  get 'chat2/index'
   get 'okane/index'
 
   resources :smpl_chats

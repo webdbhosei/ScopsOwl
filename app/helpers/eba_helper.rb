@@ -1,0 +1,2 @@
+module EbaHelper
+end
