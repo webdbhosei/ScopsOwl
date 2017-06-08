@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'rh21_qpage/index'
   get 'ikuo/sample'
   get 'hitme/index'
+  get 'hitme/traffic_list'
   get 'welcome/index'
 
   root to: 'welcome#index'
