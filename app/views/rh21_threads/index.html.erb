@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rh21 Threads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Subject</th>
+      <th>Timestamp</th>
+      <th>Content</th>
+      <th>Quality</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rh21_threads.each do |rh21_thread| %>
+      <tr>
+        <td><%= rh21_thread.title %></td>
+        <td><%= rh21_thread.subject %></td>
+        <td><%= rh21_thread.timestamp %></td>
+        <td><%= rh21_thread.content %></td>
+        <td><%= rh21_thread.quality %></td>
+        <td><%= link_to 'Show', rh21_thread %></td>
+        <td><%= link_to 'Edit', edit_rh21_thread_path(rh21_thread) %></td>
+        <td><%= link_to 'Destroy', rh21_thread, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rh21 Thread', new_rh21_thread_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @rh21_thread.title %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @rh21_thread.subject %>
+</p>
+
+<p>
+  <strong>Timestamp:</strong>
+  <%= @rh21_thread.timestamp %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @rh21_thread.content %>
+</p>
+
+<p>
+  <strong>Quality:</strong>
+  <%= @rh21_thread.quality %>
+</p>
+
+<%= link_to 'Edit', edit_rh21_thread_path(@rh21_thread) %> |
+<%= link_to 'Back', rh21_threads_path %>
