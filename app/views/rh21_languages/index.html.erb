@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rh21 Languages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rh21_languages.each do |rh21_language| %>
+      <tr>
+        <td><%= rh21_language.language %></td>
+        <td><%= link_to 'Show', rh21_language %></td>
+        <td><%= link_to 'Edit', edit_rh21_language_path(rh21_language) %></td>
+        <td><%= link_to 'Destroy', rh21_language, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rh21 Language', new_rh21_language_path %>

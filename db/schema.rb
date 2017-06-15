@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< 3803dd959e983a09be3d258a0afb78c26a1f43dd
 ActiveRecord::Schema.define(version: 20170615021809) do
 
   create_table "chat_groups", force: :cascade do |t|
@@ -24,6 +25,9 @@ ActiveRecord::Schema.define(version: 20170615021809) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+=======
+ActiveRecord::Schema.define(version: 20170614200358) do
+>>>>>>> rh21_imp : Add DB implementation for qpage
 
   create_table "ik_categories", force: :cascade do |t|
     t.string   "name"
@@ -36,6 +40,44 @@ ActiveRecord::Schema.define(version: 20170615021809) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "ik_category_id"
+  end
+
+  create_table "rh21_languages", force: :cascade do |t|
+    t.text     "language"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rh21_posts", force: :cascade do |t|
+    t.text     "timestamp"
+    t.text     "title"
+    t.text     "content"
+    t.integer  "likes"
+    t.integer  "dislikes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rh21_roles", force: :cascade do |t|
+    t.text     "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rh21_statuses", force: :cascade do |t|
+    t.text     "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rh21_threads", force: :cascade do |t|
+    t.text     "title"
+    t.text     "subject"
+    t.text     "timestamp"
+    t.text     "content"
+    t.integer  "quality"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "smpl_chats", force: :cascade do |t|
