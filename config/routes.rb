@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :chat_groups
+  resources :chat_messages
   resources :ik_categories
   resources :ik_memos
   get 'eba/index'
