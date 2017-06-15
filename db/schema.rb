@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< 3803dd959e983a09be3d258a0afb78c26a1f43dd
 ActiveRecord::Schema.define(version: 20170615021809) do
 
   create_table "chat_groups", force: :cascade do |t|
@@ -25,9 +24,6 @@ ActiveRecord::Schema.define(version: 20170615021809) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-=======
-ActiveRecord::Schema.define(version: 20170614200358) do
->>>>>>> rh21_imp : Add DB implementation for qpage
 
   create_table "ik_categories", force: :cascade do |t|
     t.string   "name"
