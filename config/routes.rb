@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :gr_fileserver_contents
   resources :chat_groups
   resources :chat_messages
   resources :rh21_posts
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   get 'guterise_fileserver/index'
+  get 'gr_fileserver_content/file_content' => 'gr_fileserver_content#file_content'
+  get 'download' => 'gr_fileserver_contents#download', :as => 'download'
 
   get 'chat/index'
   post 'chat/index'

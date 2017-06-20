@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>File name:</strong>
+  <%= @gr_fileserver_content.file_name %>
+</p>
+
+<p>
+  <strong>File type:</strong>
+  <%= @gr_fileserver_content.file_type %>
+</p>
+
+<p>
+  <strong>File size:</strong>
+  <%= @gr_fileserver_content.file_size %>
+</p>
+
+<p>
+  <strong>File permission:</strong>
+  <% if @gr_fileserver_content.file_permission == 1 %>
+      Private
+  <% else %>
+      Public
+  <% end %>
+  <%#= @gr_fileserver_content.file_permission %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @gr_fileserver_content.updated_at %>
+</p>
+
+<%= link_to_if false, 'Download', method: :download %> |
+<%= link_to 'Back', gr_fileserver_contents_path %>
