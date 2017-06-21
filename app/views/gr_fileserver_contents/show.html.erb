@@ -30,5 +30,5 @@
   <%= @gr_fileserver_content.updated_at %>
 </p>
 
-<%= link_to_if false, 'Download', method: :download %> |
+<%= link_to 'Download', :action => :download, :id => @gr_fileserver_content %> |
 <%= link_to 'Back', gr_fileserver_contents_path %>

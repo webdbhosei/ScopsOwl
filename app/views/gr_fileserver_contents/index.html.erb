@@ -20,7 +20,7 @@
         <td><%= gr_fileserver_content.id %></td>
         <td><%= link_to gr_fileserver_content.file_name, gr_fileserver_content %></td>
         <td><%= gr_fileserver_content.file_type %></td>
-        <td><%= gr_fileserver_content.file_size %></td>
+        <td><%= number_to_human_size gr_fileserver_content.file_size, precision: 4 %></td>
         <td>
             <% if gr_fileserver_content.file_permission == 1 %>
                 Private
@@ -28,7 +28,7 @@
                 Public
             <% end %>
         </td>
-        <td><%= link_to 'Show', gr_fileserver_content %></td>
+        <td><%= link_to 'Show', edit_gr_fileserver_content_path(gr_fileserver_content) %></td>
         <td><%= link_to 'Download', :action => :download, :id => gr_fileserver_content %></td>
         <td><%= link_to 'Destroy', gr_fileserver_content, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

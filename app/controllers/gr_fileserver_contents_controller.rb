@@ -47,16 +47,17 @@ class GrFileserverContentsController < ApplicationController
   # PATCH/PUT /gr_fileserver_contents/1
   # PATCH/PUT /gr_fileserver_contents/1.json
   def update
-    @file = params[:gr_fileserver_content][:file_content]
-    gr_fileserver_content_param = {
-        :file_content => @file.read,
-        :file_name => @file.original_filename,
-        :file_type => @file.content_type,
-        :file_size => @file.size,
-        :file_permission => [:gr_fileserver_content][:file_permission]
-    }
+    #@file = params[:gr_fileserver_content][:file_content]
+    @file = GrFileserverContent.find(params[:id])
 
     respond_to do |format|
+        gr_fileserver_content_param = {
+            :file_content => @file.file_content,
+            :file_name => @file.file_name,
+            :file_type => @file.file_type,
+            :file_size => @file.file_size,
+            :file_permission => params[:gr_fileserver_content][:file_permission]
+        }
       if @gr_fileserver_content.update(gr_fileserver_content_params)
         format.html { redirect_to @gr_fileserver_content, notice: 'Gr fileserver content was successfully updated.' }
         format.json { render :show, status: :ok, location: @gr_fileserver_content }
