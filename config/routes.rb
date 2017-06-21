@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'chat/index'
   post 'chat/index'
 
-  get 'rh21_qpage/index'
+  get 'rh21_thread/index'
   get 'ikuo/sample'
   get 'hitme/index'
   get 'hitme/traffic_list'
