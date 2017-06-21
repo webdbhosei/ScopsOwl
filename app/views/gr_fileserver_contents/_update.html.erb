@@ -23,7 +23,7 @@
 
   <p>
     <strong>File size:</strong>
-    <%= @gr_fileserver_content.file_size %>
+    <%= number_to_human_size @gr_fileserver_content.file_size, percision: 4 %>
   </p>
 
   <p>
