@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :ht_favorites
+  resources :ht_routes
   resources :chat_groups
   resources :chat_messages
   resources :rh21_posts

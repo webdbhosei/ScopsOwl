@@ -3,13 +3,28 @@
 <body>
 	<div id="container">
 		<div id="favorite">
-			<ul>
-			<li>Chuo Line</li>
-			<li>Coco Bus</li>
-			<li>Keio Bus</li>
-			<li>Train(Tokyo 23 wards)  Add your favorite</li>
-			<li>Bus(Tokyo 23 wards)  Add your favorite</li>
-		</ul>
+			<table border="1">
+			  <thead>
+			    <tr>
+			      <th>name</th>
+			      <th>detail</th>
+			      <th>chat</th>
+			      <th>favorite</th>
+			      <th colspan="3"></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <% @ht_routes.each do |ht_route| %>
+ 			    <tr>
+			      <td><%= ht_route.name %> </td>
+			      <td><%= ht_route.route_detail %> </td>
+			      <td><%= ht_route.chat_id %> </td>
+			      <td>unconstruction </td>
+			    </tr>
+			    <% end %>
+			  </tbody>
+			</table>
 		</div>
 	</div>
+  <%= link_to 'ht_route table','../ht_routes#indx' %>
 </body>
