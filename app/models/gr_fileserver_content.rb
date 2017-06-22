@@ -1,0 +1,2 @@
+class GrFileserverContent < ApplicationRecord
+end

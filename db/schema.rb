@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 20170621145931) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+ 
+  create_table "gr_fileserver_contents", force: :cascade do |t|
+    t.binary   "file_content"
+    t.string   "file_name"
+    t.string   "file_type"
+    t.integer  "file_size"
+    t.integer  "file_permission"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "ik_categories", force: :cascade do |t|
     t.string   "name"
@@ -89,6 +99,13 @@ ActiveRecord::Schema.define(version: 20170621145931) do
     t.integer  "quality"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "smpl_chats", force: :cascade do |t|
