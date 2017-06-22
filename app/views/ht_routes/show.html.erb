@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ht_route.name %>
+</p>
+
+<p>
+  <strong>Route detail:</strong>
+  <%= @ht_route.route_detail %>
+</p>
+
+<p>
+  <strong>Chat:</strong>
+  <%= @ht_route.chat_id %>
+</p>
+
+<%= link_to 'Edit', edit_ht_route_path(@ht_route) %> |
+<%= link_to 'Back', ht_routes_path %>

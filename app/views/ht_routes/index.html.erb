@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ht Routes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Route detail</th>
+      <th>Chat</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ht_routes.each do |ht_route| %>
+      <tr>
+        <td><%= ht_route.name %></td>
+        <td><%= ht_route.route_detail %></td>
+        <td><%= ht_route.chat_id %></td>
+        <td><%= link_to 'Show', ht_route %></td>
+        <td><%= link_to 'Edit', edit_ht_route_path(ht_route) %></td>
+        <td><%= link_to 'Destroy', ht_route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ht Route', new_ht_route_path %>

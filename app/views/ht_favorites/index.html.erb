@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ht Favorites</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Route</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ht_favorites.each do |ht_favorite| %>
+      <tr>
+        <td><%= ht_favorite.user_id %></td>
+        <td><%= ht_favorite.route_id %></td>
+        <td><%= link_to 'Show', ht_favorite %></td>
+        <td><%= link_to 'Edit', edit_ht_favorite_path(ht_favorite) %></td>
+        <td><%= link_to 'Destroy', ht_favorite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ht Favorite', new_ht_favorite_path %>

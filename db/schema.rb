@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621121930) do
+ActiveRecord::Schema.define(version: 20170621145931) do
 
   create_table "chat_groups", force: :cascade do |t|
     t.string   "name"
@@ -25,6 +25,21 @@ ActiveRecord::Schema.define(version: 20170621121930) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "ht_favorites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "route_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ht_routes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "route_detail"
+    t.integer  "chat_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+ 
   create_table "gr_fileserver_contents", force: :cascade do |t|
     t.binary   "file_content"
     t.string   "file_name"

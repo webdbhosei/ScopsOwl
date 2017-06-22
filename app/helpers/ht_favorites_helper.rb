@@ -1,0 +1,2 @@
+module HtFavoritesHelper
+end
