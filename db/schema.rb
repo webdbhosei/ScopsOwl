@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170621145931) do
 
-  create_table "eba_answers", force: :cascade do |t|
-    t.integer  "eba_question_id"
-    t.integer  "user_id"
-    t.text     "answer"
-    t.datetime "uploaded_time"
-  end
- 
   create_table "chat_groups", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -30,6 +23,34 @@ ActiveRecord::Schema.define(version: 20170621145931) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "eba_answers", force: :cascade do |t|
+    t.integer  "eba_question_id"
+    t.integer  "user_id"
+    t.text     "answer"
+    t.datetime "uploaded_time"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "eba_questions", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.string   "classname"
+    t.datetime "uploaded_time"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "gr_fileserver_contents", force: :cascade do |t|
+    t.binary   "file_content"
+    t.string   "file_name"
+    t.string   "file_type"
+    t.integer  "file_size"
+    t.integer  "file_permission"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "ht_favorites", force: :cascade do |t|
@@ -45,25 +66,6 @@ ActiveRecord::Schema.define(version: 20170621145931) do
     t.integer  "chat_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-  end
- 
-  create_table "gr_fileserver_contents", force: :cascade do |t|
-    t.binary   "file_content"
-    t.string   "file_name"
-    t.string   "file_type"
-    t.integer  "file_size"
-    t.integer  "file_permission"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  create_table "eba_questions", force: :cascade do |t|
-    t.string   "title"
-    t.integer  "user_id"
-    t.string   "classname"
-    t.datetime "uploaded_time"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
   end
 
   create_table "ik_categories", force: :cascade do |t|
