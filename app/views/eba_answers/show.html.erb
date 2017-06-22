@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @eba_answer.eba_question_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @eba_answer.user_id %>
+</p>
+
+<p>
+  <strong>Answer:</strong>
+  <%= @eba_answer.answer %>
+</p>
+
+<p>
+  <strong>Uploaded time:</strong>
+  <%= @eba_answer.uploaded_time %>
+</p>
+
+<%= link_to 'Edit', edit_eba_answer_path(@eba_answer) %> |
+<%= link_to 'Back', eba_answers_path %>

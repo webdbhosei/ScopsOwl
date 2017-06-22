@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :eba_answers
+  resources :eba_questions
   resources :ht_favorites
   resources :ht_routes
   resources :gr_fileserver_contents
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   resources :rh21_statuses
   resources :ik_categories
   resources :ik_memos
+
   get 'eba/index'
   get 'chat2/index'
   get 'okane/index'

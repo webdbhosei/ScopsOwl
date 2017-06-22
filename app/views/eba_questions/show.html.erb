@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @eba_question.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @eba_question.user_id %>
+</p>
+
+<p>
+  <strong>Classname:</strong>
+  <%= @eba_question.classname %>
+</p>
+
+<p>
+  <strong>Uploaded time:</strong>
+  <%= @eba_question.uploaded_time %>
+</p>
+
+<%= link_to 'Edit', edit_eba_question_path(@eba_question) %> |
+<%= link_to 'Back', eba_questions_path %>

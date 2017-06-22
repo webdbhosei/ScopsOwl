@@ -12,6 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20170621145931) do
 
+  create_table "eba_answers", force: :cascade do |t|
+    t.integer  "eba_question_id"
+    t.integer  "user_id"
+    t.text     "answer"
+    t.datetime "uploaded_time"
+  end
+ 
   create_table "chat_groups", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -48,6 +55,15 @@ ActiveRecord::Schema.define(version: 20170621145931) do
     t.integer  "file_permission"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "eba_questions", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.string   "classname"
+    t.datetime "uploaded_time"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "ik_categories", force: :cascade do |t|
