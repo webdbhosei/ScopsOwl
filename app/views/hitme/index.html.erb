@@ -1,4 +1,31 @@
-<h1>Hitme#index</h1>
+<h1>Traffic Delay</h1>
 <p>
+
 </p>
 
+<body>
+    <div class="container">
+    	
+    	<div id="left_time">
+		<h2>Next Bus Time</h2>
+		Higashikoganei - Hosei<br/>
+		18:00
+		<hr/>
+		Hosei - Higashikoganei<br/>
+		18:02
+    	</div>
+	<div id="favorite">
+		<h2>Favorite routes</h2>
+ 		<ul>
+			<li>Chuo Line</li>
+			<li>Coco Bus</li>
+			<li>Keio Bus</li>
+		</ul>
+		<%= link_to "list of train and bus", hitme_traffic_list_path %>
+	</div>
+ 	<div id="map">
+		<%= image_tag 'testmap_hitme.png', :size=>'800x300' %>
+	</div>
+    </div>
+  <%= link_to 'ht_favorite table' , '../ht_favorites#index' %> 
+  </body>

@@ -1,0 +1,22 @@
+<%= form_for(rh21_status) do |f| %>
+  <% if rh21_status.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rh21_status.errors.count, "error") %> prohibited this rh21_status from being saved:</h2>
+
+      <ul>
+      <% rh21_status.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.text_area :status %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

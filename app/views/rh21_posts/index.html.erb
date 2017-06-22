@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rh21 Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Timestamp</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Likes</th>
+      <th>Dislikes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rh21_posts.each do |rh21_post| %>
+      <tr>
+        <td><%= rh21_post.timestamp %></td>
+        <td><%= rh21_post.title %></td>
+        <td><%= rh21_post.content %></td>
+        <td><%= rh21_post.likes %></td>
+        <td><%= rh21_post.dislikes %></td>
+        <td><%= link_to 'Show', rh21_post %></td>
+        <td><%= link_to 'Edit', edit_rh21_post_path(rh21_post) %></td>
+        <td><%= link_to 'Destroy', rh21_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rh21 Post', new_rh21_post_path %>

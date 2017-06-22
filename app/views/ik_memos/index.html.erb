@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ik Memos</h1>
+
+This is a sample page of database creation.
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ik_memos.each do |ik_memo| %>
+      <tr>
+        <td><%= ik_memo.content %></td>
+        <td><%= ik_memo.ik_category.name %></td>
+        <td><%= link_to 'Show', ik_memo %></td>
+        <td><%= link_to 'Edit', edit_ik_memo_path(ik_memo) %></td>
+        <td><%= link_to 'Destroy', ik_memo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ik Memo', new_ik_memo_path %>

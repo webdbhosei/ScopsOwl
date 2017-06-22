@@ -1,0 +1,2 @@
+module Rh21StatusesHelper
+end

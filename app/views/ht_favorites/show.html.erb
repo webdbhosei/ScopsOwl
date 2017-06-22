@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @ht_favorite.user_id %>
+</p>
+
+<p>
+  <strong>Route:</strong>
+  <%= @ht_favorite.route_id %>
+</p>
+
+<%= link_to 'Edit', edit_ht_favorite_path(@ht_favorite) %> |
+<%= link_to 'Back', ht_favorites_path %>

@@ -1,2 +1,34 @@
-<h1>Okane#index</h1>
-<p>Find me in app/views/okane/index.html.erb</p>
+<div class="chat-container">
+  <section class="chat-header">
+    <h1><span class="glyphicon glyphicon-menu-hamburger" onclick="showProfile()"></span><%= current_user.email %></h1>
+    <div class="chat-body">
+      <article id="threads" class="short">
+        <ul id="message-list">
+        </ul>
+        <!--<dl id="thread-list">
+
+        </dl>-->
+      </article>
+      <div class="sens-btn">
+          <span class="glyphicon glyphicon-send"></span>
+      </div>
+      <div class="message-text">
+        <%= form_tag 'index', id: 'message' do %>
+          <%= text_field_tag 'body'  %>
+        <% end %>
+      </div>
+      <article id="profile" class="tall">
+        profile
+      </article>
+      <article id="contacts" class="tall">
+        list of contacts
+      </article>
+      <article id="rooms" class="tall">
+        rooms
+      </article>
+    </div>
+    <div class="chat-footer">
+      <span class="glyphicon glyphicon-user" onclick="showUsers()"></span><span onclick="showThreads()" class="active-choice glyphicon glyphicon-comment"></span><span class="glyphicon glyphicon-home" onclick="showRooms()"></span>
+    </div>
+  </section>
+</div>

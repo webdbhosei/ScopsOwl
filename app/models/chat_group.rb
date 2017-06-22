@@ -1,0 +1,2 @@
+class ChatGroup < ApplicationRecord
+end

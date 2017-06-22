@@ -34,7 +34,7 @@ Rails.application.configure do
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'webdb.hosei@signalysis.co.jp'}
-  config.action_mailer.default_url_options = { host: '192.168.11.3:3000' }
+  config.action_mailer.default_url_options = { host: '10.110.3.86:3000' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

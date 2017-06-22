@@ -1,0 +1,33 @@
+<%= form_for(rh21_thread) do |f| %>
+  <% if rh21_thread.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rh21_thread.errors.count, "error") %> prohibited this rh21_thread from being saved:</h2>
+
+      <ul>
+      <% rh21_thread.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :subject %>
+    <%= f.text_field :subject %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-lg btn-primary"%>
+  </div>
+  <%= link_to 'Back', rh21_threads_path %>
+<% end %>

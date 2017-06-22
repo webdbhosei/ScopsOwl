@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @rh21_thread.timestamp %> - <%= @rh21_thread.title %></h3>
+  </div>
+  <div class="panel-body">
+    <%= @rh21_thread.subject %>
+    <br />
+    <%= @rh21_thread.content %>
+    <br />
+    Quality: <%= @rh21_thread.quality %>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_rh21_thread_path(@rh21_thread) %> |
+<%= link_to 'Back', rh21_threads_path %>

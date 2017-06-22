@@ -1,6 +1,19 @@
 Rails.application.routes.draw do
   resources :eba_answers
   resources :eba_questions
+  resources :ht_favorites
+  resources :ht_routes
+  resources :gr_fileserver_contents
+  resources :chat_groups
+  resources :chat_messages
+  resources :rh21_posts
+  resources :rh21_threads
+  resources :rh21_roles
+  resources :rh21_languages
+  resources :rh21_statuses
+  resources :ik_categories
+  resources :ik_memos
+
   get 'eba/index'
   get 'chat2/index'
   get 'okane/index'
@@ -9,13 +22,16 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   get 'guterise_fileserver/index'
+  get 'gr_fileserver_content/file_content' => 'gr_fileserver_content#file_content'
+  get 'download' => 'gr_fileserver_contents#download', :as => 'download'
 
   get 'chat/index'
   post 'chat/index'
 
-  get 'rh21_qpage/index'
+  get 'rh21_thread/index'
   get 'ikuo/sample'
   get 'hitme/index'
+  get 'hitme/traffic_list'
   get 'welcome/index'
 
   root to: 'welcome#index'

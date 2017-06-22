@@ -1,0 +1,27 @@
+<%= form_for(ik_memo) do |f| %>
+  <% if ik_memo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ik_memo.errors.count, "error") %> prohibited this ik_memo from being saved:</h2>
+
+      <ul>
+      <% ik_memo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="field">
+     <%= f.label :ik_category_id %><br />
+     <%= f.select :ik_category_id, IkCategory.all.collect{|c|[c.name,c.id]} %>
+   </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

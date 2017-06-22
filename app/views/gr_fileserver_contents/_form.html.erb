@@ -1,0 +1,49 @@
+<%= form_for @gr_fileserver_content, :html => {:multipart => true} do |f| %>
+  <% if gr_fileserver_content.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(gr_fileserver_content.errors.count, "error") %> prohibited this gr_fileserver_content from being saved:</h2>
+
+      <ul>
+      <% gr_fileserver_content.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if false %>
+    <div class="field">
+      <%= f.label :file_content %>
+      <%= f.text_field :file_content %>
+    </div>
+
+    <div class="field">
+      <%= f.label :file_name %>
+      <%= f.text_field :file_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :file_type %>
+      <%= f.text_field :file_type %>
+    </div>
+
+    <div class="field">
+      <%= f.label :file_size %>
+      <%= f.number_field :file_size %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :file_content %>
+    <%= f.file_field :file_content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :file_permission %>
+    <%= f.select :file_permission, [["Private", 1], ["Public", 2]] %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
