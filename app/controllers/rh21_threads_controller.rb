@@ -28,7 +28,7 @@ class Rh21ThreadsController < ApplicationController
 
     respond_to do |format|
       if @rh21_thread.save
-        format.html { redirect_to @rh21_thread, notice: 'Rh21 thread was successfully created.' }
+        format.html { redirect_to @rh21_thread, notice: 'Thread was successfully created.' }
         format.json { render :show, status: :created, location: @rh21_thread }
       else
         format.html { render :new }

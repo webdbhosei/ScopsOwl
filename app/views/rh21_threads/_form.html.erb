@@ -13,17 +13,12 @@
 
   <div class="field">
     <%= f.label :title %>
-    <%= f.text_area :title %>
+    <%= f.text_field :title %>
   </div>
 
   <div class="field">
     <%= f.label :subject %>
-    <%= f.text_area :subject %>
-  </div>
-
-  <div class="field">
-    <%= f.label :timestamp %>
-    <%= f.text_area :timestamp %>
+    <%= f.text_field :subject %>
   </div>
 
   <div class="field">
@@ -31,12 +26,8 @@
     <%= f.text_area :content %>
   </div>
 
-  <div class="field">
-    <%= f.label :quality %>
-    <%= f.number_field :quality %>
-  </div>
-
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-lg btn-primary"%>
   </div>
+  <%= link_to 'Back', rh21_threads_path %>
 <% end %>
