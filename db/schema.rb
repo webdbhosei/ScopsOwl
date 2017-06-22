@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20170621121930) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "gr_fileserver_contents", force: :cascade do |t|
+    t.binary   "file_content"
+    t.string   "file_name"
+    t.string   "file_type"
+    t.integer  "file_size"
+    t.integer  "file_permission"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "ik_categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
