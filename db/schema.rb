@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615021809) do
+ActiveRecord::Schema.define(version: 20170619060554) do
 
   create_table "chat_groups", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20170615021809) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "gr_fileserver_contents", force: :cascade do |t|
+    t.binary   "file_content"
+    t.string   "file_name"
+    t.string   "file_type"
+    t.integer  "file_size"
+    t.integer  "file_permission"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "ik_categories", force: :cascade do |t|

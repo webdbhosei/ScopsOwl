@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fileserver Contents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>File name</th>
+      <th>File type</th>
+      <th>File size</th>
+      <th>File permission</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gr_fileserver_contents.each do |gr_fileserver_content| %>
+        <tr>
+        <td><%= link_to gr_fileserver_content.file_name, gr_fileserver_content %></td>
+        <td><%= gr_fileserver_content.file_type %></td>
+        <td><%= number_to_human_size gr_fileserver_content.file_size, precision: 4 %></td>
+        <td>
+            <% if gr_fileserver_content.file_permission == 1 %>
+                Private
+            <% else %>
+                Public
+            <% end %>
+        </td>
+        <td><%= link_to 'Show', gr_fileserver_content %></td>
+        <td><%= link_to 'Download', :action => :download, :id => gr_fileserver_content %></td>
+        <td><%= link_to 'Destroy', gr_fileserver_content, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Upload', new_gr_fileserver_content_path %>
