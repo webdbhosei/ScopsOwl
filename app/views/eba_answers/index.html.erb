@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Eba Answers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>User</th>
+      <th>Answer</th>
+      <th>Uploaded time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @eba_answers.each do |eba_answer| %>
+      <tr>
+        <td><%= eba_answer.eba_question_id %></td>
+        <td><%= eba_answer.user_id %></td>
+        <td><%= eba_answer.answer %></td>
+        <td><%= eba_answer.uploaded_time %></td>
+        <td><%= link_to 'Show', eba_answer %></td>
+        <td><%= link_to 'Edit', edit_eba_answer_path(eba_answer) %></td>
+        <td><%= link_to 'Destroy', eba_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Eba Answer', new_eba_answer_path %>

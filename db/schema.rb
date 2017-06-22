@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526105959) do
+ActiveRecord::Schema.define(version: 20170621132734) do
+
+  create_table "eba_answers", force: :cascade do |t|
+    t.integer  "eba_question_id"
+    t.integer  "user_id"
+    t.text     "answer"
+    t.datetime "uploaded_time"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "eba_questions", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.string   "classname"
+    t.datetime "uploaded_time"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "smpl_chats", force: :cascade do |t|
     t.integer  "user_id"

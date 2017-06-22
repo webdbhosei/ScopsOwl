@@ -1,0 +1,37 @@
+<%= form_for(eba_question) do |f| %>
+  <% if eba_question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(eba_question.errors.count, "error") %> prohibited this eba_question from being saved:</h2>
+
+      <ul>
+      <% eba_question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :classname %>
+    <%= f.text_field :classname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :uploaded_time %>
+    <%= f.datetime_select :uploaded_time %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :eba_answers
+  resources :eba_questions
   get 'eba/index'
   get 'chat2/index'
   get 'okane/index'
