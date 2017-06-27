@@ -5,3 +5,5 @@ Done by 22 July, 2017
   Hitme:
   Okane:
   Rh21:
+      - Database structure,
+      - mock up user interface for qpage index
