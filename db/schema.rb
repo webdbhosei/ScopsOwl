@@ -10,15 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621145931) do
+ActiveRecord::Schema.define(version: 20170623052938) do
 
-  create_table "eba_answers", force: :cascade do |t|
-    t.integer  "eba_question_id"
-    t.integer  "user_id"
-    t.text     "answer"
-    t.datetime "uploaded_time"
-  end
- 
   create_table "chat_groups", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -30,6 +23,35 @@ ActiveRecord::Schema.define(version: 20170621145931) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "eba_answers", force: :cascade do |t|
+    t.integer  "eba_question_id"
+    t.integer  "user_id"
+    t.text     "answer"
+    t.datetime "uploaded_time"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "eba_questions", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.string   "classname"
+    t.datetime "uploaded_time"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "gr_fileserver_contents", force: :cascade do |t|
+    t.binary   "file_content"
+    t.string   "file_name"
+    t.string   "file_type"
+    t.integer  "file_size"
+    t.integer  "file_permission"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "user_id"
   end
 
   create_table "ht_favorites", force: :cascade do |t|
@@ -45,25 +67,6 @@ ActiveRecord::Schema.define(version: 20170621145931) do
     t.integer  "chat_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-  end
- 
-  create_table "gr_fileserver_contents", force: :cascade do |t|
-    t.binary   "file_content"
-    t.string   "file_name"
-    t.string   "file_type"
-    t.integer  "file_size"
-    t.integer  "file_permission"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  create_table "eba_questions", force: :cascade do |t|
-    t.string   "title"
-    t.integer  "user_id"
-    t.string   "classname"
-    t.datetime "uploaded_time"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
   end
 
   create_table "ik_categories", force: :cascade do |t|
@@ -93,6 +96,10 @@ ActiveRecord::Schema.define(version: 20170621145931) do
     t.integer  "dislikes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index [nil], name: "index_rh21_posts_on_rh21_language_id"
+    t.index [nil], name: "index_rh21_posts_on_rh21_status_id"
+    t.index [nil], name: "index_rh21_posts_on_rh21_thread_id"
+    t.index [nil], name: "index_rh21_posts_on_user_id"
   end
 
   create_table "rh21_roles", force: :cascade do |t|
@@ -115,6 +122,7 @@ ActiveRecord::Schema.define(version: 20170621145931) do
     t.integer  "quality"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index [nil], name: "index_rh21_threads_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|

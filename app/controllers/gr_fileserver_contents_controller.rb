@@ -1,10 +1,20 @@
 class GrFileserverContentsController < ApplicationController
-  before_action :set_gr_fileserver_content, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_action :set_gr_fileserver_content, only: [:show, :edit, :update, :destroy, :download]
 
   # GET /gr_fileserver_contents
   # GET /gr_fileserver_contents.json
   def index
-    @gr_fileserver_contents = GrFileserverContent.all
+    # When the user Handle is not set, force to register Handle
+    if current_user.handle.blank?
+      url = root_url( only_path: false )
+      SignupMailer.signup_email( current_user, url ).deliver_now
+      session[:set_handle_from_chat] = true
+      redirect_to edit_user_path(current_user)
+    end
+    session[:user] = current_user
+
+    @gr_fileserver_contents = GrFileserverContent.where(user_id: current_user.id ).all
   end
 
   # GET /gr_fileserver_contents/1
@@ -30,7 +40,8 @@ class GrFileserverContentsController < ApplicationController
         :file_name => @file.original_filename,
         :file_type => @file.content_type,
         :file_size => @file.size,
-        :file_permission => params[:gr_fileserver_content][:file_permission]
+        :file_permission => params[:gr_fileserver_content][:file_permission],
+        :user_id => current_user.id
     )
 
     respond_to do |format|
@@ -56,7 +67,8 @@ class GrFileserverContentsController < ApplicationController
             :file_name => @file.file_name,
             :file_type => @file.file_type,
             :file_size => @file.file_size,
-            :file_permission => params[:gr_fileserver_content][:file_permission]
+            :file_permission => params[:gr_fileserver_content][:file_permission],
+            :user_id => current_user.id
         }
       if @gr_fileserver_content.update(gr_fileserver_content_params)
         format.html { redirect_to @gr_fileserver_content, notice: 'Gr fileserver content was successfully updated.' }
