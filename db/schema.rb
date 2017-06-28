@@ -120,9 +120,10 @@ ActiveRecord::Schema.define(version: 20170623052938) do
     t.text     "timestamp"
     t.text     "content"
     t.integer  "quality"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.integer  "language_id"
   end
 
   create_table "rooms", force: :cascade do |t|
