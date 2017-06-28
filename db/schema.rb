@@ -96,10 +96,6 @@ ActiveRecord::Schema.define(version: 20170623052938) do
     t.integer  "dislikes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [nil], name: "index_rh21_posts_on_rh21_language_id"
-    t.index [nil], name: "index_rh21_posts_on_rh21_status_id"
-    t.index [nil], name: "index_rh21_posts_on_rh21_thread_id"
-    t.index [nil], name: "index_rh21_posts_on_user_id"
   end
 
   create_table "rh21_roles", force: :cascade do |t|
@@ -122,7 +118,6 @@ ActiveRecord::Schema.define(version: 20170623052938) do
     t.integer  "quality"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [nil], name: "index_rh21_threads_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|

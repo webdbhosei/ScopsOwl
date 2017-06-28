@@ -1,5 +1,4 @@
 class GrFileserverContentsController < ApplicationController
-  before_filter :authenticate_user!
   before_action :set_gr_fileserver_content, only: [:show, :edit, :update, :destroy, :download]
 
   # GET /gr_fileserver_contents

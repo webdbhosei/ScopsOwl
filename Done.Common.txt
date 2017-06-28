@@ -7,3 +7,10 @@ Done by 22 July, 2017
   Rh21:
       - Database structure,
       - mock up user interface for qpage index
+Done by 29 July, 2017
+  Daizu39:
+  Eba:
+  GuteRise: 
+  Hitme:
+  Okane:
+  Rh21:

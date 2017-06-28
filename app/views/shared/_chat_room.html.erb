@@ -1,0 +1,9 @@
+Hey! This is just a sample.<br />
+Okane, please replace my sample below with your code. <br />
+Ikuo.<br />
+<%= form_tag('/chat/index', :method => :post, id: 'message') do %>
+  <%= text_field_tag 'body' %>
+<% end %>
+
+<ul id="message-list">
+</ul>
