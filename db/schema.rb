@@ -94,8 +94,12 @@ ActiveRecord::Schema.define(version: 20170623052938) do
     t.text     "content"
     t.integer  "likes"
     t.integer  "dislikes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "user_id"
+    t.integer  "rh21_thread_id"
+    t.integer  "rh21_status_id"
+    t.integer  "rh21_language_id"
   end
 
   create_table "rh21_roles", force: :cascade do |t|
@@ -118,6 +122,7 @@ ActiveRecord::Schema.define(version: 20170623052938) do
     t.integer  "quality"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
