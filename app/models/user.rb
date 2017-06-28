@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :smpl_chats
   has_many :gr_fileserver_contents
+  has_many :rh21_posts
+  has_many :rh21_threads
 end

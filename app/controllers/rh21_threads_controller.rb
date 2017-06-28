@@ -1,9 +1,21 @@
 class Rh21ThreadsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_rh21_thread, only: [:show, :edit, :update, :destroy]
 
   # GET /rh21_threads
   # GET /rh21_threads.json
+  # def index
+  #   @rh21_threads = Rh21Thread.all
+  # end
   def index
+    if current_user.handle.blank?
+      url = root_url(only_path: false)
+      SignupMailer.signup_email(current_user, url).deliver_now
+      session[:set_handle_from_chat] = true
+      redirect_to edit_user_path(current_user)
+    end
+    session[:user] = current_user
+
     @rh21_threads = Rh21Thread.all
   end
 
@@ -24,6 +36,16 @@ class Rh21ThreadsController < ApplicationController
   # POST /rh21_threads
   # POST /rh21_threads.json
   def create
+    @thread = params[:rh21_thread]
+    # puts @param
+    rh21_thread_params = {
+      :title => params[:rh21_thread][:title],
+      :subject => @thread[:subject],
+      :content => @thread[:content],
+      :language_id => @thread[:language_id],
+      :user_id => current_user.id,
+      :timestamp => Time.now.getutc
+    }
     @rh21_thread = Rh21Thread.new(rh21_thread_params)
 
     respond_to do |format|

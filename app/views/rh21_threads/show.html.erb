@@ -1,10 +1,14 @@
 <p id="notice"><%= notice %></p>
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title"><%= @rh21_thread.timestamp %> - <%= @rh21_thread.title %></h3>
+    <h3 class="panel-title"><%= User.find(@rh21_thread.user_id).handle %> - <%= @rh21_thread.title %></h3>
   </div>
   <div class="panel-body">
+    <%= @rh21_thread.timestamp %>
+    <br />
     <%= @rh21_thread.subject %>
+    <br />
+    Language: <%= Rh21Language.find(@rh21_thread.language_id).language %>
     <br />
     <%= @rh21_thread.content %>
     <br />
@@ -12,5 +16,7 @@
   </div>
 </div>
 
-<%= link_to 'Edit', edit_rh21_thread_path(@rh21_thread) %> |
-<%= link_to 'Back', rh21_threads_path %>
+<% if @rh21_thread.user_id == current_user.id %>
+    <%= link_to 'Edit', edit_rh21_thread_path(@rh21_thread) %> |
+<% end %>
+Reply | <%= link_to 'Back', rh21_threads_path %>
