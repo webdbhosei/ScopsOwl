@@ -30,6 +30,11 @@
   <%= @gr_fileserver_content.updated_at %>
 </p>
 
+<p>
+  <strong>Owner:</strong>
+  <%= User.find(@gr_fileserver_content.user_id).handle %>
+</p>
+
 <%= link_to 'Download', :action => :download, :id => @gr_fileserver_content %> |
 <%= link_to 'Permission change', edit_gr_fileserver_content_path(@gr_fileserver_content) %> |
 <%= link_to 'Back', gr_fileserver_contents_path %>

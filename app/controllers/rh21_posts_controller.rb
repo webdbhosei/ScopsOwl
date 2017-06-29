@@ -1,10 +1,19 @@
 class Rh21PostsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_rh21_post, only: [:show, :edit, :update, :destroy]
 
   # GET /rh21_posts
   # GET /rh21_posts.json
   def index
-    @rh21_posts = Rh21Post.all
+    if current_user.handle.blank?
+      url = root_url(only_path: false)
+      SignupMailer.signup_email(current_user, url).deliver_now
+      session[:set_handle_from_chat] = true
+      redirect_to edit_user_path(current_user)
+    end
+    session[:user] = current_user
+
+    @rh21_posts = Rh21Post.where(user_id: current_user.id).all
   end
 
   # GET /rh21_posts/1
@@ -24,6 +33,7 @@ class Rh21PostsController < ApplicationController
   # POST /rh21_posts
   # POST /rh21_posts.json
   def create
+    before_filter :authenticate_user!
     @rh21_post = Rh21Post.new(rh21_post_params)
 
     respond_to do |format|

@@ -22,6 +22,11 @@
   </div>
 
   <div class="field">
+     <%= f.label :language_id %><br />
+     <%= f.select :language_id, Rh21Language.all.collect{|c|[c.language,c.id]} %>
+   </div>
+
+  <div class="field">
     <%= f.label :content %>
     <%= f.text_area :content %>
   </div>
