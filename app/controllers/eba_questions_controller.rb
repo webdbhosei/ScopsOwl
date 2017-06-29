@@ -1,5 +1,6 @@
 class EbaQuestionsController < ApplicationController
   before_action :set_eba_question, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /eba_questions
   # GET /eba_questions.json
@@ -25,6 +26,8 @@ class EbaQuestionsController < ApplicationController
   # POST /eba_questions.json
   def create
     @eba_question = EbaQuestion.new(eba_question_params)
+    @eba_question.user_id = current_user.id
+    @eba_question.uploaded_time = Time.now
 
     respond_to do |format|
       if @eba_question.save
@@ -59,6 +62,10 @@ class EbaQuestionsController < ApplicationController
       format.html { redirect_to eba_questions_url, notice: 'Eba question was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def list
+    @eba_question = EbaQuestion.find(params[:id])
   end
 
   private

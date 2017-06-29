@@ -2,7 +2,7 @@
 
 <h1>Eba Answers</h1>
 
-<table>
+<table border = 2>
   <thead>
     <tr>
       <th>Question</th>
@@ -16,8 +16,8 @@
   <tbody>
     <% @eba_answers.each do |eba_answer| %>
       <tr>
-        <td><%= eba_answer.eba_question_id %></td>
-        <td><%= eba_answer.user_id %></td>
+        <td><%= EbaQuestion.find(eba_answer.eba_question_id).title %></td>
+        <td><%= User.find(eba_answer.user_id).handle %></td>
         <td><%= eba_answer.answer %></td>
         <td><%= eba_answer.uploaded_time %></td>
         <td><%= link_to 'Show', eba_answer %></td>
@@ -30,4 +30,5 @@
 
 <br>
 
-<%= link_to 'New Eba Answer', new_eba_answer_path %>
+<%= link_to 'New Eba Answer', new_eba_answer_path %><br>
+<%= link_to 'Back to eba_portal', eba_index_path %>

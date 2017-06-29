@@ -1,5 +1,6 @@
 class EbaAnswersController < ApplicationController
   before_action :set_eba_answer, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /eba_answers
   # GET /eba_answers.json
@@ -24,8 +25,10 @@ class EbaAnswersController < ApplicationController
   # POST /eba_answers
   # POST /eba_answers.json
   def create
+    
     @eba_answer = EbaAnswer.new(eba_answer_params)
-
+    @eba_answer.user_id = current_user.id 
+    @eba_answer.uploaded_time = Time.now 
     respond_to do |format|
       if @eba_answer.save
         format.html { redirect_to @eba_answer, notice: 'Eba answer was successfully created.' }
