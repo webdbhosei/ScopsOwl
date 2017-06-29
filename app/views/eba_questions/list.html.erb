@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Answer</h1>
+
+<h3>Question:<br> <%= @eba_question.title %></h3>
+
+<table border = 2>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Answer</th>
+      <th>Uploaded time</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% EbaAnswer.where(eba_question_id: @eba_question.id).each do |eba_answer| %>
+      <tr>
+        <td><%= User.find(eba_answer.user_id).handle %></td>
+        <td><%= eba_answer.answer %></td>
+        <td><%= eba_answer.uploaded_time %></td>
+        <td><%= link_to 'Show', eba_answer %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back to eba_question', eba_questions_path %>
