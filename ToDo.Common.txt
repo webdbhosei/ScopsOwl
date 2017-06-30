@@ -1,8 +1,8 @@
 22 July, 2017
-  ToDo by 29 July, 2017
+  ToDo by 6 July, 2017
     Daizu39: Mock Screen (html files)
     Eba: Install tables of Question and Answers
-    GuteRise: Folder create on the server
+    GuteRise: Adjust page design of my fileserver.
     Hitme: Bus Routes tables
     Okane: Install chat tables to keep records of chats
     Rh21: Views of languages and necessary screen links

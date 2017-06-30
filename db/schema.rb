@@ -100,6 +100,9 @@ ActiveRecord::Schema.define(version: 20170623052938) do
     t.integer  "rh21_thread_id"
     t.integer  "rh21_status_id"
     t.integer  "rh21_language_id"
+    t.index ["rh21_language_id"], name: "index_rh21_posts_on_rh21_language_id"
+    t.index ["rh21_status_id"], name: "index_rh21_posts_on_rh21_status_id"
+    t.index ["rh21_thread_id"], name: "index_rh21_posts_on_rh21_thread_id"
   end
 
   create_table "rh21_roles", force: :cascade do |t|

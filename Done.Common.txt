@@ -1,6 +1,6 @@
 Done by 22 July, 2017
   Daizu39:
-  Eba: 
+  Eba:
      - user_id and uploaded_time is automatically added when user create question or answer
      - create link that is question to list of answers
   GuteRise: Done implementation of "file" uploading and downloading function to my fileserver.
@@ -12,7 +12,7 @@ Done by 22 July, 2017
 Done by 29 July, 2017
   Daizu39:
   Eba:
-  GuteRise: 
+  GuteRise: Identified user who upload file to the server.
   Hitme:
   Okane:
   Rh21:
