@@ -15,4 +15,4 @@ Done by 29 July, 2017
   GuteRise: 
   Hitme:
   Okane:
-  Rh21:
+  Rh21: Update thread view and linked i with related tables
