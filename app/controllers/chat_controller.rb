@@ -1,5 +1,4 @@
 class ChatController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
   def index
     # When the user Handle is not set, force to register Handle
     if current_user.handle.blank?

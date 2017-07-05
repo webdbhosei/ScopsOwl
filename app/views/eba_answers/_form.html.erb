@@ -13,23 +13,14 @@
 
   <div class="field">
     <%= f.label :question_id %>
-    <%= f.select :eba_question_id, EbaQuestion.all.collect{|c|[c.id]} %>
+    <%= f.select :eba_question_id, EbaQuestion.all.collect{|c|[c.title,c.id]} %>
   </div>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
-  </div>
-
+  
   <div class="field">
     <%= f.label :answer %>
     <%= f.text_area :answer %>
   </div>
 
-  <div class="field">
-    <%= f.label :uploaded_time %>
-    <%= f.datetime_select :uploaded_time %>
-  </div>
 
   <div class="actions">
     <%= f.submit %>
