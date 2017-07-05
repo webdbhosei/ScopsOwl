@@ -17,6 +17,7 @@ class Rh21ThreadsController < ApplicationController
     session[:user] = current_user
 
     @rh21_threads = Rh21Thread.all
+    @rh21_posts = Rh21Post.where(rh21_thread_id: Rh21Thread.ids).all
   end
 
   # GET /rh21_threads/1
