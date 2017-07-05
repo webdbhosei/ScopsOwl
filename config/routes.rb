@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get 'ikuo/sample'
   get 'hitme/index'
   get 'hitme/traffic_list'
+  get 'ht_routes_list', :to => 'ht_routes#index'
   get 'welcome/index'
 
   root to: 'welcome#index'
