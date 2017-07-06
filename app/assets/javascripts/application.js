@@ -12,9 +12,39 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap.min
-//= require turbolinks
+//= require materialize-sprockets
 //= require_tree .
+//$(document).ready(function(){
+(function ($) {
+  $(function () {
+    $('.button-collapse').sideNav({
+      menuWidth: 300, // Default is 300
+      edge: 'left', // Choose the horizontal origin
+      closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      draggable: true, // Choose whether you can drag to open on touch screens,
+    });
+    $('.collapsible').collapsible();
+    $('.tap-target').tapTarget('open');
+  });
+})(jQuery);
+
+$('.button-collapse').sideNav('show');
+$('.button-collapse').sideNav('hide');
+
+$(document).on('click',　function(){
+  $('.tap-target').tapTarget('close');
+});
+
+$(document).ready(function() {
+    $('select').material_select();
+});
+
+(function(){
+    $('.scrollspy').scrollSpy();
+});
+
+
+//});
 
 window.addEventListener('load', ()=> {
   document.getElementById('message').onsubmit = () => {

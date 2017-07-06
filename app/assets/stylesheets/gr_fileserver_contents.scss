@@ -1,3 +1,22 @@
 // Place all the styles related to the gr_fileserverContents controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "materialize/components/color";
+$primary-color: color("indigo", "darken-3") !default;
+$secondary-color: color("orange", "accent-4");
+@import 'materialize';
+
+h5 {
+  font-size: 1.64rem;
+  line-height: 110%;
+  margin: 0.82rem 0 0.656rem 0;
+}
+//header, main, footer {
+//  padding-left: 240px;
+//}
+
+//@media only screen and (max-width : 992px) {
+//  header, main, footer {
+//    padding-left: 0;
+//  }
+//}
