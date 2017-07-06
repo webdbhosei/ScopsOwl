@@ -37,7 +37,6 @@ class Rh21PostsController < ApplicationController
   # POST /rh21_posts.json
   def create
     @post = params[:rh21_post]
-    # if request.post?
     params.each do |key,value|
       Rails.logger.warn "Param #{key}: #{value}"
     end
@@ -52,17 +51,13 @@ class Rh21PostsController < ApplicationController
     }
     @rh21_post = Rh21Post.new(rh21_post_params)
 
-    # respond_to do |format|
     if @rh21_post.save
-      # format.html { redirect_to @rh21_post, notice: 'Rh21 post was successfully created.' }
-      # format.json { render :show, status: :created, location: @rh21_post }
       flash[:notice] = "Successfully created post."
       redirect_to "/rh21_threads/#{params[:post][:thread_id]}"
     else
       format.html { render :new }
       format.json { render json: @rh21_post.errors, status: :unprocessable_entity }
     end
-    # end
   end
 
   # PATCH/PUT /rh21_posts/1
