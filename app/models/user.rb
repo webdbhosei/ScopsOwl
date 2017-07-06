@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :gr_fileserver_contents
   has_many :rh21_posts
   has_many :rh21_threads
+  has_many :chatroom_users
+  has_many :chatrooms, through: :chatroom_users
+  has_many :messages
 end

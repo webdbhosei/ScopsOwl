@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170623052938) do
+ActiveRecord::Schema.define(version: 20170703101221) do
 
   create_table "chat_groups", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,21 @@ ActiveRecord::Schema.define(version: 20170623052938) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "chatroom_users", force: :cascade do |t|
+    t.integer  "chatroom_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["chatroom_id"], name: "index_chatroom_users_on_chatroom_id"
+    t.index ["user_id"], name: "index_chatroom_users_on_user_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "eba_answers", force: :cascade do |t|
@@ -82,6 +97,16 @@ ActiveRecord::Schema.define(version: 20170623052938) do
     t.integer  "ik_category_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.integer  "chatroom_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "rh21_languages", force: :cascade do |t|
     t.text     "language"
     t.datetime "created_at", null: false
@@ -100,6 +125,9 @@ ActiveRecord::Schema.define(version: 20170623052938) do
     t.integer  "rh21_thread_id"
     t.integer  "rh21_status_id"
     t.integer  "rh21_language_id"
+    t.index ["rh21_language_id"], name: "index_rh21_posts_on_rh21_language_id"
+    t.index ["rh21_status_id"], name: "index_rh21_posts_on_rh21_status_id"
+    t.index ["rh21_thread_id"], name: "index_rh21_posts_on_rh21_thread_id"
   end
 
   create_table "rh21_roles", force: :cascade do |t|

@@ -1,9 +1,10 @@
-Hey! This is just a sample.<br />
-Okane, please replace my sample below with your code. <br />
-Ikuo.<br />
-<%= form_tag('/chat/index', :method => :post, id: 'message') do %>
-  <%= text_field_tag 'body' %>
+<ul class="list-group" style="text-align:center;">
+<% if user_signed_in? %>
+<% current_user.chatrooms.each do |chatroom| %>
+  <li class="list-group-item" style="margin:10px;"><%= link_to chatroom.name, chatroom, data: {behavior: "chatroom-link", chatroom_id: chatroom.id} %></li>
+<% end%>
+<%= link_to 'See all chat rooms', chatrooms_path, class: 'btn btn-default btn-success' %>
+<hr/>
+<%= link_to 'Create New Chatroom', new_chatroom_path, class: 'btn btn-default' %>
 <% end %>
-
-<ul id="message-list">
 </ul>
