@@ -16,16 +16,10 @@
   </div>
 </div>
 
-<% if @rh21_thread.user_id == current_user.id %>
-    <%= link_to 'Edit', edit_rh21_thread_path(@rh21_thread) %> |
-<% end %>
-<%= link_to 'Reply', "#{new_rh21_post_path}?thread_id=#{@rh21_thread.id}&language_id=#{@rh21_thread.language_id}" %> | <%= link_to 'Back', rh21_threads_path %>
-
-<% if @rh21_posts != nil %>
   <% @rh21_posts.each do |rh21_post| %>
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= User.find(rh21_post.user_id).handle %> - <%= link_to rh21_thread.title, rh21_thread %></h3>
+        <h3 class="panel-title"><%= User.find(rh21_post.user_id).handle %> - <%= link_to rh21_post.title, rh21_post %></h3>
       </div>
       <div class="panel-body">
         <%= rh21_post.timestamp %>
@@ -41,5 +35,8 @@
         </div> -->
       </div>
     </div>
-  <% end %>
 <% end %>
+<% if @rh21_thread.user_id == current_user.id %>
+    <%= link_to 'Edit', edit_rh21_thread_path(@rh21_thread) %> |
+<% end %>
+<%= link_to 'Reply', "#{new_rh21_post_path}?thread_id=#{@rh21_thread.id}&language_id=#{@rh21_thread.language_id}" %> | <%= link_to 'Back', rh21_threads_path %>
