@@ -68,6 +68,11 @@ class EbaQuestionsController < ApplicationController
     @eba_question = EbaQuestion.find(params[:id])
   end
 
+  def add
+    @eba_question = EbaQuestion.find(params[:id])
+    @eba_answer = EbaAnswer.new
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_eba_question

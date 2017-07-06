@@ -2,7 +2,7 @@
 
 <h1>Eba Questions</h1>
 
-<table border = 2>
+<table border = 2 >
   <thead>
     <tr>
       <th>Title</th>
@@ -10,7 +10,7 @@
       <th>Classname</th>
       <th>Uploaded time</th>
       <th>Answers Num</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -22,6 +22,7 @@
         <td><%= eba_question.classname %></td>
         <td><%= eba_question.uploaded_time %></td>
         <td><%= EbaAnswer.where(eba_question_id: eba_question.id).count%></td>
+        <td><%= link_to 'Add', add_eba_question_path(eba_question) %></td>
         <td><%= link_to 'Show', eba_question %></td>
         <td><%= link_to 'Edit', edit_eba_question_path(eba_question) %></td>
         <td><%= link_to 'Destroy', eba_question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
