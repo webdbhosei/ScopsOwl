@@ -10,11 +10,7 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :timestamp %>
-    <%= f.text_area :timestamp %>
-  </div>
+  <% if params[:thread_id] %><input type="hidden" id="thread_id" name="post[thread_id]" value="<%= params[:thread_id] %>" /><% end %>
 
   <div class="field">
     <%= f.label :title %>
@@ -23,20 +19,11 @@
 
   <div class="field">
     <%= f.label :content %>
-    <%= f.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= f.label :likes %>
-    <%= f.number_field :likes %>
-  </div>
-
-  <div class="field">
-    <%= f.label :dislikes %>
-    <%= f.number_field :dislikes %>
+    <%= f.text_area :content, size: "60x3"%>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-lg btn-primary"%>
+    <%= link_to 'Back', "/rh21_threads/" %>
   </div>
 <% end %>
