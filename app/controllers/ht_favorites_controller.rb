@@ -21,9 +21,13 @@ class HtFavoritesController < ApplicationController
   def edit
   end
 
-  # POST /ht_favorites
-  # POST /ht_favorites.json
+  # POST /ht_favorites/
+  # POST /ht_favorites/.json
   def create
+    ht_favorite_params ={
+      :user_id => current_user.id,
+      :route_id =>params[:id]
+    }
     @ht_favorite = HtFavorite.new(ht_favorite_params)
 
     respond_to do |format|

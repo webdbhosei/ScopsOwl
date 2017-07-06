@@ -19,12 +19,15 @@
 			      <td><%= ht_route.name %> </td>
 			      <td><%= ht_route.route_detail %> </td>
 			      <td><%= ht_route.chat_id %> </td>
-			      <td>unconstruction </td>
+			      <td><%= form_tag("/ht_favorites/create/"+ht_route.id.to_s, :method => 'POST') do %> 
+                              <%= submit_tag 'Add to favorite' %>
+                              <% end %></td>
 			    </tr>
 			    <% end %>
 			  </tbody>
 			</table>
 		</div>
 	</div>
+  <%= link_to 'back',hitme_index_path %></br>
   <%= link_to 'ht_route table',ht_routes_list_path %>
 </body>

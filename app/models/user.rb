@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :gr_fileserver_contents
   has_many :rh21_posts
   has_many :rh21_threads
+  has_many :ht_favorites
 end

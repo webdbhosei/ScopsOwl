@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get 'hitme/index'
   get 'hitme/traffic_list'
   get 'ht_routes_list', :to => 'ht_routes#index'
+  post 'ht_favorites/create/:id' => 'ht_favorites#create'
   get 'welcome/index'
 
   root to: 'welcome#index'
