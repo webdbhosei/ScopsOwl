@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @chatroom.name %>
+</p>
+
+<%= link_to 'Edit', edit_chatroom_path(@chatroom) %> |
+<%= link_to 'Back', chatrooms_path %>
+
+
+<div data-behavior='messages' data-chatroom-id='<%= @chatroom.id %>'>
+  <% @messages.each do |message| %>
+    <%= render message %>
+    <% end %>
+  <%= form_for [@chatroom, Message.new], remote: true do |f| %>
+    <%= f.text_area :body, rows: 1, class: "form-control", autofocus: true %>
+  <% end %>
+</div>

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  resources :chatrooms do
+    resource :chatroom_users
+    resources :messages
+  end
   resources :eba_answers
-  resources :eba_questions do 
+  resources :eba_questions do
     member do
       get :list
     end
