@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
+
   resources :chatrooms do
     resource :chatroom_users
     resources :messages
   end
+  get "/eba_answers" => redirect("eba/index")
+  get "/eba_questions" => redirect("eba/index")
   resources :eba_answers
   resources :eba_questions do
     member do
       get :list
+      get :add
     end
   end
   resources :ht_favorites
@@ -24,6 +28,7 @@ Rails.application.routes.draw do
 
   get 'daizu39/index'
   get 'eba/index'
+  get 'eba/showall'
   get 'chat2/index'
   get 'okane/index'
 
