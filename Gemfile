@@ -25,10 +25,15 @@ gem 'coffee-rails', '~> 4.2'
 gem 'therubyracer', platforms: :ruby
 # gem 'less-rails'
 gem 'execjs'
-gem 'twitter-bootstrap-rails'
+#gem 'twitter-bootstrap-rails'
 
 # Internationalization
 # gem 'i18n-tasks'
+
+gem 'materialize-sass'
+gem 'rails_utils'
+gem 'jquery-rails'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
