@@ -1,40 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card grey darken-2 hoverable">
+      <div class="card-content white-text">
+        <span class="card-title">File detail</span>
+        <p>
+          <strong>File name:</strong>
+          <%= @gr_fileserver_content.file_name %>
+        </p>
+        <p>
+          <strong>File type:</strong>
+          <%= @gr_fileserver_content.file_type %>
+        </p>
+        <p>
+          <strong>File size:</strong>
+          <%= number_to_human_size @gr_fileserver_content.file_size, percision: 4 %>
+        </p>
+        <p>
+          <strong>File permission:</strong>
+          <% if @gr_fileserver_content.file_permission == 1 %>
+            Private
+          <% else %>
+            Public
+          <% end %>
+        </p>
+        <p>
+          <strong>Updated at:</strong>
+          <%= @gr_fileserver_content.updated_at %>
+        </p>
+        <p>
+          <strong>Owner:</strong>
+          <%= User.find(@gr_fileserver_content.user_id).handle %>
+        </p>
+      </div>
+      <div class="card-action">
+        <a href="/download?id=<%= @gr_fileserver_content.id %>" action="<%= :download %>" >Download</a>
+        <a href="<%= edit_gr_fileserver_content_path(@gr_fileserver_content) %>" >Edit</a>
+        <a href="<%= gr_fileserver_contents_path %>">Back</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>File name:</strong>
-  <%= @gr_fileserver_content.file_name %>
-</p>
-
-<p>
-  <strong>File type:</strong>
-  <%= @gr_fileserver_content.file_type %>
-</p>
-
-<p>
-    <strong>File size:</strong>
-    <%= number_to_human_size @gr_fileserver_content.file_size, percision: 4 %>
-</p>
-
-<p>
-  <strong>File permission:</strong>
-  <% if @gr_fileserver_content.file_permission == 1 %>
-      Private
-  <% else %>
-      Public
-  <% end %>
-  <%#= @gr_fileserver_content.file_permission %>
-</p>
-
-<p>
-  <strong>Updated at:</strong>
-  <%= @gr_fileserver_content.updated_at %>
-</p>
-
-<p>
-  <strong>Owner:</strong>
-  <%= User.find(@gr_fileserver_content.user_id).handle %>
-</p>
-
-<%= link_to 'Download', :action => :download, :id => @gr_fileserver_content, class: "waves-effect waves-teal btn-flat"%><br /><br />
-<%= link_to 'Permission change', edit_gr_fileserver_content_path(@gr_fileserver_content), class: "waves-effect waves-light btn" %>
-<%= link_to 'Back', gr_fileserver_contents_path, class: "waves-effect waves-light btn" %>
+<%= render "fixed_action_button" %>

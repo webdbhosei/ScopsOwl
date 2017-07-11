@@ -44,7 +44,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         if session[:set_handle_from_chat]
           session[:set_handle_from_chat] = nil
-          format.html { redirect_to chat_index_path }
+          format.html { redirect_to root_path }
         else
           format.html { redirect_to @user, notice: 'User was successfully updated.' }
           format.json { render :show, status: :ok, location: @user }

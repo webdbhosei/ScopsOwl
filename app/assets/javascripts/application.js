@@ -35,10 +35,6 @@ $(document).on('click',　function(){
   $('.tap-target').tapTarget('close');
 });
 
-$(document).ready(function() {
-    $('select').material_select();
-});
-
 (function(){
     $('.scrollspy').scrollSpy();
 });

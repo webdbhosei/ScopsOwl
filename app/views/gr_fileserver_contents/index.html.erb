@@ -1,8 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <% if @gr_fileserver_contents.size == 0 %>
-    <font size="4">File not exists</font>
-    <br />
+  <div class="row">
+    <div class="col s12 m5">
+      <div class="card-panel grey darken-1">
+        <span class="white-text"><font size="4">File not exists your fileserver.
+            You can upload the files using button on right buttom of screen.</font>
+        </span>
+      </div>
+    </div>
+  </div>
 <% else %>
 
   <div class="row">
@@ -40,8 +47,8 @@
                 <td><%= gr_fileserver_content.updated_at %></td>
                 <td class="right-align">
                   <%= link_to 'Show', gr_fileserver_content %>
-                  <%= link_to 'Download', :action => :download, :id => gr_fileserver_content %>
-                  <%= link_to 'Destroy', gr_fileserver_content, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <a href="/download?id=<%= gr_fileserver_content.id %>" action="<%= :download %>" >Download</a>
+                  <%= link_to 'Remove', gr_fileserver_content, method: :delete, data: { confirm: 'Are you sure?' } %>
                 </td>
               </tr>
             <% end %>
@@ -52,26 +59,19 @@
   </div>
 
 <% end %>
-<br>
 
-<div class="fixed-action-btn">
-  <a id="upload" class="btn-floating btn-large waves-effect waves-light orange accent-4" href="gr_fileserver_contents/new" >
-    <i class="material-icons">add</i>
-  </a>
-</div>
+<%= render "fixed_action_button" %>
 
-<%# if false %>
-  <div class="tap-target-wrapper open">
-    <div class="tap-target upload orange darken-2" data-activates="upload">
-      <div class="tap-target-content">
-        <h5>Start the file uploading</h5>
-        <p>Any file can upload next page.</p>
-      </div>
-    </div>
-    <div class="tap-target-wave">
-      <a class="waves-effect waves-light btn btn-floating btn-large orange accent-4 tap-target-origin" href="gr_fileserver_contents/new">
-        <i class="large material-icons">add</i>
-      </a>
+<div class="tap-target-wrapper open">
+  <div class="tap-target upload orange darken-2" data-activates="upload">
+    <div class="tap-target-content">
+      <h5>Start the file uploading</h5>
+      <p>Any file can upload next page.</p>
     </div>
   </div>
-<%# end %>
+  <div class="tap-target-wave">
+    <a class="waves-effect waves-light btn btn-floating btn-large orange accent-4 tap-target-origin" href="gr_fileserver_contents/new">
+      <i class="large material-icons">add</i>
+    </a>
+  </div>
+</div>
