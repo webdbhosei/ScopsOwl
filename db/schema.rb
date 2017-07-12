@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703101221) do
+ActiveRecord::Schema.define(version: 20170712174146) do
 
   create_table "chat_groups", force: :cascade do |t|
     t.string   "name"
@@ -119,15 +119,8 @@ ActiveRecord::Schema.define(version: 20170703101221) do
     t.text     "content"
     t.integer  "likes"
     t.integer  "dislikes"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "user_id"
-    t.integer  "rh21_thread_id"
-    t.integer  "rh21_status_id"
-    t.integer  "rh21_language_id"
-    t.index ["rh21_language_id"], name: "index_rh21_posts_on_rh21_language_id"
-    t.index ["rh21_status_id"], name: "index_rh21_posts_on_rh21_status_id"
-    t.index ["rh21_thread_id"], name: "index_rh21_posts_on_rh21_thread_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "rh21_roles", force: :cascade do |t|
@@ -148,10 +141,8 @@ ActiveRecord::Schema.define(version: 20170703101221) do
     t.text     "timestamp"
     t.text     "content"
     t.integer  "quality"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "user_id"
-    t.integer  "language_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -164,6 +155,15 @@ ActiveRecord::Schema.define(version: 20170703101221) do
   create_table "smpl_chats", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "timetables", force: :cascade do |t|
+    t.integer  "inbound"
+    t.integer  "route_id"
+    t.integer  "hour"
+    t.integer  "min"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
