@@ -35,6 +35,6 @@
   <%= User.find(@gr_fileserver_content.user_id).handle %>
 </p>
 
-<%= link_to 'Download', :action => :download, :id => @gr_fileserver_content %> |
-<%= link_to 'Permission change', edit_gr_fileserver_content_path(@gr_fileserver_content) %> |
-<%= link_to 'Back', gr_fileserver_contents_path %>
+<%= link_to 'Download', :action => :download, :id => @gr_fileserver_content, class: "waves-effect waves-teal btn-flat"%><br /><br />
+<%= link_to 'Permission change', edit_gr_fileserver_content_path(@gr_fileserver_content), class: "waves-effect waves-light btn" %>
+<%= link_to 'Back', gr_fileserver_contents_path, class: "waves-effect waves-light btn" %>

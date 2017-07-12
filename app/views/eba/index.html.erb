@@ -1,5 +1,37 @@
-<h1>Eba#index</h1>
-<p>Find me in app/views/eba/index.html.erb</p>
+<h1>Eba Questions</h1>
+
+<table border = 2 width = "600" >
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>User</th>
+      <th>Classname</th>
+      <th>Uploaded time</th>
+      <th>Answers Num</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% EbaQuestion.all.each do |eba_question| %>
+      <tr>
+        <td><%= link_to eba_question.title, list_eba_question_path(eba_question) %></td>
+        <td><%= User.find(eba_question.user_id).handle %></td>
+        <td><%= eba_question.classname %></td>
+        <td><%= eba_question.uploaded_time %></td>
+        <td><%= EbaAnswer.where(eba_question_id: eba_question.id).count%></td>
+        <td><%= link_to 'Add', add_eba_question_path(eba_question) %></td>
+        <td><%= link_to 'Show', eba_question %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Eba Question', new_eba_question_path %><br>
+<%= link_to 'Show Questions And Answers', eba_showall_path %><br>
+<!--
 <p><%= link_to 'Question List', eba_questions_path%></p>
 <p><%= link_to 'Answer List', eba_answers_path%></p>
-
+-->

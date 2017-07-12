@@ -1,0 +1,72 @@
+<nav role="navigation">
+
+  <div class="nav-wrapper white-text">
+    <a href="#!" class="brand-logo">Scops Owl</a>
+    <a href="#" id="sidenav" data-activates="slide-out" data-turbolinks="false" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><%= link_to "Home", root_path, class: "waves-efect waves-light" %></li>
+      <li><%= link_to "Chat", okane_index_path, class: "waves-efect waves-light" %></li>
+      <li><%= link_to "Fileserver", gr_fileserver_contents_path, class: "waves-efect waves-light" %></li>
+      <li><%= link_to "Bus dely", hitme_index_path, class: "waves-efect waves-light" %></li>
+    </ul>
+  </div>
+
+</nav>
+
+<ul id="slide-out" class="side-nav" style="overflow: auto">
+  <% if user_signed_in? %>
+    <li><div class="userView">
+      <div class="background">
+        <%= image_tag "Hosei_logo.png" %>
+      </div><br />
+      <span><%= image_tag "UserFace.png", class: "circle" %></span>
+      <span class="name"><%= current_user.handle %></span>
+      <span class="email"><%= current_user.email %></span>
+    </div></li>
+    <li>
+      <%= link_to root_path, class: "waves-efect" do %>
+        <i class="material-icons">home</i>Home
+      <% end %>
+    </li>
+    <li>
+      <%= link_to okane_index_path, class: "waves-efect waves-light" do %>
+        <i class="material-icons">chat</i>Chat
+      <% end %>
+    </li>
+    <li>
+      <%= link_to gr_fileserver_contents_path, class: "waves-efect waves-ligh" do %>
+        <i class="material-icons">cloud</i>Fileserver
+      <% end %>
+    </li>
+    <li>
+      <%= link_to hitme_index_path, class: "waves-efect waves-light" do %>
+        <i class="material-icons">directions_bus</i>Bus Delay
+      <% end %>
+    </li>
+    <li>
+      <%= link_to daizu39_index_path, class: "waves-efect waves-light" do %>
+        <i class="material-icons">school</i>Educational support
+      <% end %>
+    </li>
+    <li>
+      <%= link_to rh21_threads_path, class: "waves-efect waves-light" do %>
+        <i class="material-icons">translate</i>Translation quality
+      <% end %>
+    </li>
+    <li>
+      <%= link_to eba_index_path, class: "waves-efect waves-light" do %>
+        <i class="material-icons">pages</i>Educational question
+      <% end %>
+    </li>
+
+    <li><div class="divider"></div></li>
+    <li>
+      <%= link_to destroy_user_session_path, :method=>'delete' do %>
+        <i class="material-icons">exit_to_app</i>Log out
+      <% end %>
+    </li>
+
+  <% else %>
+    <li><%= link_to "Log in", new_user_session_path, class: "waves-efect" %></li>
+  <% end %>
+</ul>

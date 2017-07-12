@@ -5,6 +5,7 @@
  *= require_self
  *= require_tree .
 */
+@import "materialize";
 
 div#header {
   background-color: cyan;
@@ -14,21 +15,33 @@ div#header {
 
 div#left {
   float: left;
-  width: 500px;
-  background-color: white;
+  width: 70%;
+  //background-color: white;
   padding: 6px 6px 6px 0;
 }
 
 div#right {
   float: right;
-  width: 300px;
-  background-color: #e8ffff;
+  width: 400px;
+  background-color: #e0e0e0;
 }
 
 div#footer {
-  background-color: white;
-  border-top: 2px lightgreen solid ;
-  text-align: center ;
-  clear: both ;
-  width: 100% ;
+  //border-top: 2px lightgreen solid ;
+  //text-align: center;
+  clear: both;
+  //width: 100%;
+}
+
+a {
+  color: #fff;
+
+  &:visited {
+    color: #fff;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: #fff;
+  }
 }

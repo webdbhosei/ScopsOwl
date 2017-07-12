@@ -22,6 +22,7 @@ class Rh21ThreadsController < ApplicationController
   # GET /rh21_threads/1
   # GET /rh21_threads/1.json
   def show
+    @rh21_posts = Rh21Post.where(rh21_thread_id: Rh21Thread.ids).all
   end
 
   # GET /rh21_threads/new

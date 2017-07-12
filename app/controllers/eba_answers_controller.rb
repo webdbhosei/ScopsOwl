@@ -28,7 +28,7 @@ class EbaAnswersController < ApplicationController
     
     @eba_answer = EbaAnswer.new(eba_answer_params)
     @eba_answer.user_id = current_user.id 
-    @eba_answer.uploaded_time = Time.now 
+    @eba_answer.uploaded_time = Time.now
     respond_to do |format|
       if @eba_answer.save
         format.html { redirect_to @eba_answer, notice: 'Eba answer was successfully created.' }

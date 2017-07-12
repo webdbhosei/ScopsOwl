@@ -1,5 +1,5 @@
 class HtFavoritesController < ApplicationController
-  before_action :set_ht_favorite, only: [:show, :edit, :update, :destroy]
+  before_action :set_ht_favorite, only: [:show, :edit, :update]
 
   # GET /ht_favorites
   # GET /ht_favorites.json
@@ -29,16 +29,18 @@ class HtFavoritesController < ApplicationController
       :route_id =>params[:id]
     }
     @ht_favorite = HtFavorite.new(ht_favorite_params)
+   # redirect_to hitme_traffic_list_path
 
     respond_to do |format|
       if @ht_favorite.save
-        format.html { redirect_to @ht_favorite, notice: 'Ht favorite was successfully created.' }
+        format.html { redirect_to hitme_traffic_list_path, notice: 'Ht favorite was successfully created.' }
         format.json { render :show, status: :created, location: @ht_favorite }
       else
         format.html { render :new }
         format.json { render json: @ht_favorite.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /ht_favorites/1
@@ -58,9 +60,10 @@ class HtFavoritesController < ApplicationController
   # DELETE /ht_favorites/1
   # DELETE /ht_favorites/1.json
   def destroy
-    @ht_favorite.destroy
+    HtFavorite.where(user_id: current_user.id).where(route_id: params[:id]).delete_all
+        
     respond_to do |format|
-      format.html { redirect_to ht_favorites_url, notice: 'Ht favorite was successfully destroyed.' }
+      format.html { redirect_to hitme_traffic_list_path , notice: 'Ht favorite was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

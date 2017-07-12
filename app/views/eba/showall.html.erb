@@ -1,0 +1,57 @@
+<h1>Eba Questions</h1>
+
+    <% EbaQuestion.all.each do |eba_question| %>
+<table border = 2 width = "600" >
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>User</th>
+      <th>Classname</th>
+      <th>Uploaded time</th>
+      <th>Answers Num</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+     <tr>
+        <td><%= link_to eba_question.title, list_eba_question_path(eba_question) %></td>
+        <td><%= User.find(eba_question.user_id).handle %></td>
+        <td><%= eba_question.classname %></td>
+        <td><%= eba_question.uploaded_time %></td>
+        <td><%= EbaAnswer.where(eba_question_id: eba_question.id).count%></td>
+        <td><%= link_to 'Add', add_eba_question_path(eba_question) %></td>
+        <td><%= link_to 'Show', eba_question %></td>
+      </tr>
+     
+</tbody>
+</table>
+<table border = 2 width = "600" >
+ <thead>
+    <tr>
+      <th>Answer</th>
+      <th>User</th>
+      <th>Uploaded time</th>
+    </tr>
+  </thead>
+<tbody>
+       <% EbaAnswer.where(eba_question_id: eba_question.id).each do |eba_answer| %>
+       <tr>
+         <td><%= eba_answer.answer%></td>
+         <td><%= User.find(eba_answer.user_id).handle %></td>
+         <td><%= eba_answer.uploaded_time %></td>
+       </tr>
+       <% end %>
+</tbody>
+ 
+</table>
+<br>
+<%end%>
+<br>
+
+<%= link_to 'Back to eba_portal', eba_index_path %><br>
+<!--
+<p><%= link_to 'Question List', eba_questions_path%></p>
+<p><%= link_to 'Answer List', eba_answers_path%></p>
+-->

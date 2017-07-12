@@ -1,5 +1,4 @@
 class Rh21PostsController < ApplicationController
-  before_filter :authenticate_user!
   before_action :set_rh21_post, only: [:show, :edit, :update, :destroy]
 
   # GET /rh21_posts
@@ -24,6 +23,10 @@ class Rh21PostsController < ApplicationController
   # GET /rh21_posts/new
   def new
     @rh21_post = Rh21Post.new
+    params.each do |key,value|
+      Rails.logger.warn "Param #{key}: #{value}"
+    end
+    Rails.logger.warn "Param #{params[:thread_id]}"
   end
 
   # GET /rh21_posts/1/edit
@@ -33,17 +36,27 @@ class Rh21PostsController < ApplicationController
   # POST /rh21_posts
   # POST /rh21_posts.json
   def create
-    before_filter :authenticate_user!
+    @post = params[:rh21_post]
+    params.each do |key,value|
+      Rails.logger.warn "Param #{key}: #{value}"
+    end
+    Rails.logger.warn "Param #{params[:post][:thread_id]}"
+    # puts @param
+    rh21_post_params = {
+      :user_id => current_user.id,
+      :rh21_thread_id => params[:post][:thread_id],
+      :title => params[:rh21_post][:title],
+      :content => @post[:content],
+      :timestamp => Time.now.getutc
+    }
     @rh21_post = Rh21Post.new(rh21_post_params)
 
-    respond_to do |format|
-      if @rh21_post.save
-        format.html { redirect_to @rh21_post, notice: 'Rh21 post was successfully created.' }
-        format.json { render :show, status: :created, location: @rh21_post }
-      else
-        format.html { render :new }
-        format.json { render json: @rh21_post.errors, status: :unprocessable_entity }
-      end
+    if @rh21_post.save
+      flash[:notice] = "Successfully created post."
+      redirect_to "/rh21_threads/#{params[:post][:thread_id]}"
+    else
+      format.html { render :new }
+      format.json { render json: @rh21_post.errors, status: :unprocessable_entity }
     end
   end
 
