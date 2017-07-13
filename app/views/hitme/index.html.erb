@@ -26,9 +26,9 @@
                       <% disp_min = timetable.min %>		    
                   <% end %>
 		<% elsif timetable.hour == h %>
-		  <% if disp_min >= time_table.min %>
-		    <%disp_hour = time_table.hour %>
-		    <% disp_min = time_table.min %>
+		  <% if disp_min >= timetable.min %>
+		    <%disp_hour = timetable.hour %>
+		    <% disp_min = timetable.min %>
 		  <%end%>  
 		<% end %>
     	      <% else %>
@@ -41,9 +41,9 @@
                       <% disp_min2 = timetable.min %>		    
                   <% end %>
 		<% elsif timetable.hour == h %>
-		  <% if disp_min2 >= time_table.min %>
-		    <%disp_hour2 = time_table.hour %>
-		    <% disp_min2 = time_table.min %>
+		  <% if disp_min2 >= timetable.min %>
+		    <%disp_hour2 = timetable.hour %>
+		    <% disp_min2 = timetable.min %>
 		  <%end%>  
 		<% end %>
 	      <% end %>
