@@ -1,5 +1,10 @@
 <h1>Eba Questions</h1>
-
+<%= form_tag(eba_search_path) do %>
+<%= select_tag :sort, options_for_select(@column) %>
+<%= text_field_tag :search %>
+<%= submit_tag 'Search', :name => nil %>
+<% end %>
+<br>
 <table border = 2 width = "600" >
   <thead>
     <tr>

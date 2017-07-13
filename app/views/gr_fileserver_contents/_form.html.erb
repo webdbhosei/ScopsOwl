@@ -1,55 +1,96 @@
-<%= form_for @gr_fileserver_content, :html => {:multipart => true} do |f| %>
-  <% if gr_fileserver_content.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(gr_fileserver_content.errors.count, "error") %> prohibited this gr_fileserver_content from being saved:</h2>
-
-      <ul>
-      <% gr_fileserver_content.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <% if false %>
-    <div class="field">
-      <%= f.label :file_content %>
-      <%= f.text_field :file_content %>
-    </div>
-
-    <div class="field">
-      <%= f.label :file_name %>
-      <%= f.text_field :file_name %>
-    </div>
-
-    <div class="field">
-      <%= f.label :file_type %>
-      <%= f.text_field :file_type %>
-    </div>
-
-    <div class="field">
-      <%= f.label :file_size %>
-      <%= f.number_field :file_size %>
-    </div>
-  <% end %>
-
-  <div class="file-field imput-field">
-    <div class="btn">
-      <span>Select File</span>
-      <%= f.file_field :file_content %>
-    </div>
-    <div class="file-path-wrapper">
-      <input class="file-path validate" type="text">
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card grey lighten-4 hoverable">
+      <div class="card-content">
+        <span class="card-title">
+          <% if current_page?(new_gr_fileserver_content_path) %>
+            Upload file
+          <% else %>
+            Change file permission
+          <% end %>
+        </span>
+        <br />
+        <% if current_page?(new_gr_fileserver_content_path) %>
+          <p>
+            <%= form_for @gr_fileserver_content, :html => {:multipart => true} do |f| %>
+              <% if gr_fileserver_content.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(gr_fileserver_content.errors.count, "error") %> prohibited this gr_fileserver_content from being saved:</h2>
+                   <ul>
+                     <% gr_fileserver_content.errors.full_messages.each do |message| %>
+                       <li><%= message %></li>
+                     <% end %>
+                   </ul>
+                </div>
+              <% end %>
+              <div class="file-field imput-field">
+                <div class="btn">
+                  <span>Select File</span>
+                  <%= f.file_field :file_content %>
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+              </div>
+              <div class="field">
+                <%= f.radio_button :file_permission, 1 , class: "with-gap" %>
+                <label for="gr_fileserver_content_file_permission_1">Private</label><br />
+                <%= f.radio_button :file_permission, 2 , class: "with-gap" %>
+                <label for="gr_fileserver_content_file_permission_2">Public</label>
+              </div>
+              <div class="card-action">
+                <button class="waves-effect waves-teal btn-flat" type="submit" name="action">
+                  <i class="material-icons right">file_upload</i>Upload
+                </button>
+                <%= link_to 'Back', gr_fileserver_contents_path, class: "waves-effect waves-teal btn-flat" %>
+              </div>
+            <% end %>
+          </p>
+        <% else %>
+          <p>
+            <%= form_for @gr_fileserver_content, :html => {:multipart => true} do |f| %>
+              <% if gr_fileserver_content.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(gr_fileserver_content.errors.count, "error") %> prohibited this gr_fileserver_content from being saved:</h2>
+                  <ul>
+                    <% gr_fileserver_content.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <p>
+                <strong>File name:</strong>
+                <%= @gr_fileserver_content.file_name %>
+              </p>
+              <p>
+                <strong>File type:</strong>
+                <%= @gr_fileserver_content.file_type %>
+              </p>
+              <p>
+                <strong>File size:</strong>
+                <%= number_to_human_size @gr_fileserver_content.file_size, percision: 4 %>
+              </p>
+              <p>
+                <strong>Updated at:</strong>
+                <%= @gr_fileserver_content.updated_at %>
+              </p>
+              <br />
+              <p>
+                <%= f.radio_button :file_permission, 1 , class: "with-gap" %>
+                <label for="gr_fileserver_content_file_permission_1">Private</label><br />
+                <%= f.radio_button :file_permission, 2 , class: "with-gap" %>
+                <label for="gr_fileserver_content_file_permission_2">Public</label>
+              </p>
+              <br />
+              <div class="card-action">
+                <button class="waves-effect waves-teal btn-flat" type="submit" name="action">Update</button>
+                <%= link_to 'Back', @gr_fileserver_content, class: "waves-effect waves-teal btn-flat" %>
+              </div>
+            <% end %>
+          </p>
+        <% end %>
+      </div>
     </div>
   </div>
-
-  <div class="field">
-    <%= f.label :file_permission %>
-    <%= f.select :file_permission, [["Private", 1], ["Public", 2]] %>
-  </div>
-
-  <button class="btn waves-effect waves-light" type="submit" name="action">
-    <i class="material-icons right">file_upload</i>Upload
-  </button>
-
-<% end %>
+</div>

@@ -38,12 +38,13 @@
     </p>
   <% end %>
 
-  <p class="field">
-    <%= f.label :file_permission %>
-    <%= f.select :file_permission, [["Private", 1], ["Public", 2]] %>
+  <p>
+    <%= f.radio_button :file_permission, 1 , class: "with-gap" %>
+    <label for="gr_fileserver_content_file_permission_1">Private</label><br />
+    <%= f.radio_button :file_permission, 2 , class: "with-gap" %>
+    <label for="gr_fileserver_content_file_permission_2">Public</label>
   </p>
 
-  <p class="actions">
-    <%= f.submit %>
-  </p>
+  <button class="btn waves-effect waves-light" type="submit" name="action">Update</button>
+
 <% end %>

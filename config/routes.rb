@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   get 'daizu39/index'
   get 'eba/index'
   get 'eba/showall'
+  get 'eba/sort'
+  get 'eba/search'
+  post 'eba/search'
   get 'chat2/index'
   get 'okane/index'
 
