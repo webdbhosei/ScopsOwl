@@ -33,11 +33,12 @@
                 </div>
               </div>
               <div class="field">
-                <%= f.radio_button :file_permission, 1 , class: "with-gap" %>
+                <%= f.radio_button :file_permission, 1 , class: "with-gap" , :checked => true %>
                 <label for="gr_fileserver_content_file_permission_1">Private</label><br />
                 <%= f.radio_button :file_permission, 2 , class: "with-gap" %>
                 <label for="gr_fileserver_content_file_permission_2">Public</label>
               </div>
+              <br />
               <div class="card-action">
                 <button class="waves-effect waves-teal btn-flat" type="submit" name="action">
                   <i class="material-icons right">file_upload</i>Upload
@@ -77,7 +78,7 @@
               </p>
               <br />
               <p>
-                <%= f.radio_button :file_permission, 1 , class: "with-gap" %>
+                <%= f.radio_button :file_permission, 1 , class: "with-gap" , :checked => true %>
                 <label for="gr_fileserver_content_file_permission_1">Private</label><br />
                 <%= f.radio_button :file_permission, 2 , class: "with-gap" %>
                 <label for="gr_fileserver_content_file_permission_2">Public</label>
