@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Inbound:</strong>
+  <%= @timetable.inbound %>
+</p>
+
+<p>
+  <strong>Route:</strong>
+  <%= @timetable.route_id %>
+</p>
+
+<p>
+  <strong>Hour:</strong>
+  <%= @timetable.hour %>
+</p>
+
+<p>
+  <strong>Min:</strong>
+  <%= @timetable.min %>
+</p>
+
+<%= link_to 'Edit', edit_timetable_path(@timetable) %> |
+<%= link_to 'Back', timetables_path %>
