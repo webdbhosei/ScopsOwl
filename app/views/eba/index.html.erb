@@ -1,6 +1,13 @@
+<script>
+  $(document).ready(function() {
+    $("select").material_select();
+  });
+</script>
+
 <h1>Eba Questions</h1>
 <%= form_tag(eba_search_path) do %>
-<%= select_tag :sort, options_for_select(@column) %>
+<%= select_tag :sort, options_for_select(@column),
+:class => 'browser-default' %>
 <%= text_field_tag :search %>
 <%= submit_tag 'Search', :name => nil %>
 <% end %>
