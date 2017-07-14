@@ -1,3 +1,16 @@
+<script>
+/* $(document).on "turbolinks:load", -> */
+//$(document).on
+  $("#new_message").keypress(function(e){
+    if (e && e.keyCode == 13)
+    {
+      e.preventDefault();
+      $(this).submit();
+    }
+  });
+
+</script>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -13,7 +26,7 @@
   <% @messages.each do |message| %>
     <%= render message %>
     <% end %>
-  <%= form_for [@chatroom, Message.new], remote: true do |f| %>
+  <%= form_for [@chatroom, Message.new] do |f| %>
     <%= f.text_area :body, rows: 1, class: "form-control", autofocus: true %>
   <% end %>
 </div>

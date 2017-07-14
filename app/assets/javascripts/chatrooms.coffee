@@ -6,3 +6,8 @@ $(document).on "turbolinks:load", ->
     if e && e.keyCode == 13
       e.preventDefault()
       $(this).submit()
+
+#    $(function(){
+#        $('a[href^=#]').click(function() {
+#            var speed = 500;
+#            var href= $(this).attr("href");
