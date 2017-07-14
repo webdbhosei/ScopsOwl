@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :timetables
   resources :chatrooms do
     resource :chatroom_users
     resources :messages
@@ -49,6 +50,9 @@ Rails.application.routes.draw do
   get 'ikuo/sample'
   get 'hitme/index'
   get 'hitme/traffic_list'
+  get 'ht_routes_list', :to => 'ht_routes#index'
+  post 'ht_favorites/create/:id' => 'ht_favorites#create'
+  post 'ht_favorites/destroy/:id' => 'ht_favorites#destroy'
   get 'welcome/index'
 
   root to: 'welcome#index'
