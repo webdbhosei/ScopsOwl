@@ -1,29 +1,38 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="container-fluld pt-3">
+  <div class="row">
+    <div class="col s4 offset-s4">
+      <div class="row login-form">
+        <div class="col s12">
+          <div class="card">
+            <span class="card-title">Log in</span>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+              <div class="form-inputs row">
+                <div class="input-field col s12 email user_email">
+                  <%= f.email_field :email, autofocus: true, class: "validate" %>
+                  <label for="user_email">Email</label>
+                </div>
+                <div class="input-field col s12 password user_password">
+                  <%= f.password_field :password, autocomplete: "off", class: "validate" %>
+                  <label for="user_password">Password</label>
+                </div>
+                <div class="input-field col s12 password required user_password_confirmation">
+                  <%= f.password_field :password_confirmation, autocomplete: "off", class: "validate" %>
+                  <label for="user_password_confirmation" class="password">Password confirmation</label>
+                </div>
+                <% if devise_mapping.rememberable? -%>
+                <% end -%>
+              </div>
+              <div class="form-actions right">
+                <i class="btn waves-effect waves-input-wrapper" ><input class="waves-button-input" data-disable-with="Sign Up" value="Sign Up" type="submit" name="commit"></i>
+              </div>
+            <% end %>
+            <div class="card-action">
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

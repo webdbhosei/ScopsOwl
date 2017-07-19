@@ -11,25 +11,33 @@
 
   </head>
 
-  <body class="gray">
-    <!--<div class="container">-->
+  <body>
+    <!--<div class="container">
     	<div id="header">
-    	  <%= image_tag "banner1.gif"  %>
-    	</div>
-      <%= render :partial => "shared/nav_bar" %>
-      <div id="left">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <%= yield %>
-      </div>
-      <div id="right">
-        <% if user_signed_in? %>
-          <%= render :partial => "shared/scrollSpy" %>
-        <% end %>
-      </div>
-      <div id="footer">
+    	  <%#= image_tag "banner1.gif"  %>
+      </div> -->
+      <header>
+        <%= render :partial => "shared/nav_bar" %>
+      </header>
+      <main class="grey lighten-3">
+          <div class="row">
+            <div class="col s12 m6 l9">
+              <p class="notice"><%= notice %></p>
+              <p class="alert"><%= alert %></p>
+              <%= yield %>
+            </div>
+            <div class="col hide-on-small-only m4 l3 gray" id="right">
+              <% if user_signed_in? %>
+                <%= render :partial => "shared/scrollSpy" %>
+              <% end %>
+            </div>
+          </div>
+      </main>
+      <footer class="page-footer">
+      <!--div id="footer"-->
         <%= render :partial => "shared/page_footer" %>
-      </div>
+      <!--/div-->
+      </footer>
     <!--</div>-->
   </body>
 
