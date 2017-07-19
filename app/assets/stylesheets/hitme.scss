@@ -14,7 +14,7 @@ h2{
 div#left_time {
   display: inline-block;
   width: 200px;
-  height: 200px;
+  height:200px;
   font-size: 12pt;
   background-color: white;
   border: solid darkgray;
@@ -31,14 +31,22 @@ div#favorite {
   background-color: white;
   //border: solid darkgray;
   vertical-align: top;
+  overflow: scroll;
   ul{
     font-size:14pt;
   }
 }
 
+div#disp_link{
+  //display: inline-block;
+  width: 300px;
+  height: 50px;
+  font-size: 14pt;
+}
+
 div#map{
   width: 600px;
   height: 600px;
-  background-color: white;
+  //background-color: white;
   margin-top: 10px;
 }

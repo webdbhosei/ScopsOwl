@@ -1,0 +1,100 @@
+<h1>Traffic Delay</h1>
+<p>
+
+</p>
+
+<body>
+    <div class="container">
+
+    	<div id="left_time">
+	  <h2>Next Bus Time</h2>
+	    <% t = Time.now %>
+	    <% h = t.hour %>
+	    <% m = t.min %>
+	    <% y = t.year %>
+	    <% mon = t.month %>
+ 	    <% d = t.day %>
+          
+	    <% disp_hour =24 %>
+	    <% disp_min = 60 %>
+	    <% disp_hour2 = 24 %>
+            <% disp_min2 = 60 %>
+	    <% @timetables.each do |timetable| %>
+	      <% if timetable.inbound == 0 %>
+		<% tt = Time.local(y,mon,d,timetable.hour,timetable.min,00 %>
+		<% diff = tt -t %>
+
+		<% if timetable.hour > h %>
+		  <% if disp_hour >timetable.hour %>
+		      <% disp_hour = timetable.hour %>
+                      <% disp_min = timetable.min %>
+		  <% elsif disp_hour == timetable.hour && disp_min >= timetable.min %>
+		      <% disp_hour = timetable.hour %>
+                      <% disp_min = timetable.min %>		    
+                  <% end %>
+		<% elsif timetable.hour == h %>
+		  <% if disp_min >= timetable.min %>
+		    <%disp_hour = timetable.hour %>
+		    <% disp_min = timetable.min %>
+		  <%end%>  
+		<% end %>
+    	      <% else %>
+		<% if timetable.hour > h %>
+		  <% if disp_hour2 >timetable.hour %>
+		      <% disp_hour2 = timetable.hour %>
+                      <% disp_min2 = timetable.min %>
+		  <% elsif disp_hour2 == timetable.hour && disp_min2 >= timetable.min %>
+		      <% disp_hour2 = timetable.hour %>
+                      <% disp_min2 = timetable.min %>		    
+                  <% end %>
+		<% elsif timetable.hour == h %>
+		  <% if disp_min2 >= timetable.min %>
+		    <%disp_hour2 = timetable.hour %>
+		    <% disp_min2 = timetable.min %>
+		  <%end%>  
+		<% end %>
+	      <% end %>
+	    <% end %>
+	    Higashikoganei - Hosei<br/>
+            <%= disp_hour %>:<%= disp_min%>
+            <hr/>
+	    Hosei - Higashikoganei<br/>
+            <%= disp_hour2 %>:<%= disp_min2%>
+    	</div>
+	<div id="favorite">
+		<h2>Favorite routes</h2>
+ 		<table border="1">
+		  <thead>
+		    <tr>
+		      <th>name</th>
+		      <th>chatroom</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <% @ht_favorites.each do |ht_favorite| %>
+		       <% @ht_routes.each do |ht_route| %>
+		         <% if ht_route.id == ht_favorite.route_id %>
+		           <tr>
+		           <td><%= ht_route.name%></td>
+			   <% @chatrooms.each do |chatroom| %>
+                             <% if chatroom.name == ht_route.name %>
+			       <td><%= link_to 'Show chatroom',"/chatrooms/"+chatroom.id.to_s %></td>
+			       <% break %>
+			     <% end %>
+			   <% end %>
+		           </tr>
+			
+		         <% end %>
+		        <% end %>
+		     <%end%>
+		   </tbody>
+		</table>
+		</ul>
+		<%= link_to "list of train and bus", hitme_traffic_list_path %>
+	</div>
+ 	<div id="map">
+		<%= image_tag 'testmap_hitme.png', :size=>'600x300' %>
+	</div>
+    </div>
+  <%= link_to 'ht_favorite table' , '../ht_favorites#index' %>
+  </body>
