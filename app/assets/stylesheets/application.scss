@@ -5,33 +5,40 @@
  *= require_self
  *= require_tree .
 */
-@import "materialize";
+@import "materialize/components/color";
+$primary-color: color("grey", "darken-1") !default;
+$secondary-color: color("orange", "accent-4");
+@import 'materialize';
 
-div#header {
+/*div#header {
   background-color: cyan;
   padding-top: 4px;
   border-top: 4px solid #6bb;
+}*/
+
+main {
+  background-color: white;
 }
 
-div#left {
+/*div#left {
   float: left;
   width: 65%;
   //background-color: white;
-  padding: 6px 6px 6px 0;
-}
+  //padding: 6px 6px 6px 0;
+}*/
 
 div#right {
-  float: right;
-  width: 400px;
+  //float: right;
+  //width: 400px;
   background-color: #e0e0e0;
 }
 
-div#footer {
+/*div#footer {
   //border-top: 2px lightgreen solid ;
   //text-align: center;
   clear: both;
   //width: 100%;
-}
+}*/
 
 /* a {
   color: #fff;

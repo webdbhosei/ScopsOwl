@@ -1,17 +1,18 @@
-<nav role="navigation">
-
-  <div class="nav-wrapper white-text">
-    <a href="#!" class="brand-logo">Scops Owl</a>
-    <a href="#" id="sidenav" data-activates="slide-out" data-turbolinks="false" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-    <ul class="right hide-on-med-and-down">
-      <li><%= link_to "Home", root_path, class: "waves-efect waves-light" %></li>
-      <li><%= link_to "Chat", okane_index_path, class: "waves-efect waves-light" %></li>
-      <li><%= link_to "Fileserver", gr_fileserver_contents_path, class: "waves-efect waves-light" %></li>
-      <li><%= link_to "Bus dely", hitme_index_path, class: "waves-efect waves-light" %></li>
-    </ul>
-  </div>
-
-</nav>
+<div class="navbar-fixed">
+  <nav role="navigation">
+    <div class="nav-wrapper white-text">
+      <%= image_tag "White_face_Scops_Owl_circle.png", :size => "60x60" %>&nbsp;&nbsp;&nbsp;
+      <%= link_to "Scops Owl Project", root_path, class: "brand-logo" %>
+      <a href="#" id="sidenav" data-activates="slide-out" data-turbolinks="false" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><%= link_to "Home", root_path, class: "waves-efect waves-light" %></li>
+        <li><%= link_to "Chat", okane_index_path, class: "waves-efect waves-light" %></li>
+        <li><%= link_to "Fileserver", gr_fileserver_contents_path, class: "waves-efect waves-light" %></li>
+        <li><%= link_to "Bus dely", hitme_index_path, class: "waves-efect waves-light" %></li>
+      </ul>
+    </div>
+  </nav>
+</div>
 
 <ul id="slide-out" class="side-nav" style="overflow: auto">
   <% if user_signed_in? %>
