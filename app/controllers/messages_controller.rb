@@ -15,8 +15,8 @@ class MessagesController < ApplicationController
       :body => params['body']
     }
     message = Message.new( message_params)
-    session['chat_message'] = @chatroom.messages.order(created_at: :desc).limit(100).reverse
     message.save
+    session['chat_message'] = @chatroom.messages.order(created_at: :desc).limit(100).reverse
     redirect_to params[:goback_to]
   end
   private

@@ -7,7 +7,12 @@
 
       <div data-behavior='messages' data-chatroom-id='<%= @chatroom_id %>' >
         <% @messages.each do |message| %>
-          <%= render :text => message['body'] %><br />
+          <% m = Message.new(message) %>
+          <% if !m.user.handle.nil? %>
+            <%= m.user.handle %>:<%= m.body %><br />
+          <% elsif m.body %>
+            No Name: <%= m.body %><br />
+          <% end %>
         <% end %>
         <%= form_tag('/messages', method: 'post', :id=>'rc_body_form' ) do %>
           <input type="hidden" name="chatroom_id", value="<%= @chatroom_id %>" />
