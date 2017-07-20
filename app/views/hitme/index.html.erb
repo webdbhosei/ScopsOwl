@@ -9,50 +9,33 @@
     	<div id="left_time">
 	  <h2>Next Bus Time</h2>
 	    <% t = Time.now %>
-	    <% h = t.hour %>
-	    <% m = t.min %>
-	    <% disp_hour =24 %>
-	    <% disp_min = 60 %>
-	    <% disp_hour2 = 24 %>
-            <% disp_min2 = 60 %>
+            <% min1 = 100 %>
+	    <% min2 = 100 %>
+	    <% diff = 0 %>
+	    <% disp_time = Time.now %>
+	    <% disp_time2 = Time.now %>
 	    <% @timetables.each do |timetable| %>
 	      <% if timetable.inbound == 0 %>
-		<% if timetable.hour > h %>
-		  <% if disp_hour >timetable.hour %>
-		      <% disp_hour = timetable.hour %>
-                      <% disp_min = timetable.min %>
-		  <% elsif disp_hour == timetable.hour && disp_min >= timetable.min %>
-		      <% disp_hour = timetable.hour %>
-                      <% disp_min = timetable.min %>		    
-                  <% end %>
-		<% elsif timetable.hour == h %>
-		  <% if disp_min >= timetable.min %>
-		    <%disp_hour = timetable.hour %>
-		    <% disp_min = timetable.min %>
-		  <%end%>  
+		<% tt = Time.local(t.year,t.month,t.day,timetable.hour,timetable.min,00) %>
+		<% diff = (tt -t)/(24*60*60) %>
+		<% if diff > 0 && diff < min1 %>
+		  <% disp_time = tt %>
+		  <% min1 = diff %>
 		<% end %>
     	      <% else %>
-		<% if timetable.hour > h %>
-		  <% if disp_hour2 >timetable.hour %>
-		      <% disp_hour2 = timetable.hour %>
-                      <% disp_min2 = timetable.min %>
-		  <% elsif disp_hour2 == timetable.hour && disp_min2 >= timetable.min %>
-		      <% disp_hour2 = timetable.hour %>
-                      <% disp_min2 = timetable.min %>		    
-                  <% end %>
-		<% elsif timetable.hour == h %>
-		  <% if disp_min2 >= timetable.min %>
-		    <%disp_hour2 = timetable.hour %>
-		    <% disp_min2 = timetable.min %>
-		  <%end%>  
+		<% tt = Time.local(t.year,t.month,t.day,timetable.hour,timetable.min,00) %>
+		<% diff = (tt -t)/(24*60*60) %>
+		<% if diff > 0 && diff < min2 %>
+		  <% disp_time2 = tt %>
+   		  <% min2 = diff %>
 		<% end %>
 	      <% end %>
 	    <% end %>
 	    Higashikoganei - Hosei<br/>
-            <%= disp_hour %>:<%= disp_min%>
-            <hr/>
+            <%= disp_time.strftime("%H:%M") %>
+	    <hr/>
 	    Hosei - Higashikoganei<br/>
-            <%= disp_hour2 %>:<%= disp_min2%>
+            <%= disp_time2.strftime("%H:%M") %>
     	</div>
 	<div id="favorite">
 		<h2>Favorite routes</h2>
@@ -83,7 +66,9 @@
 		   </tbody>
 		</table>
 		</ul>
-		<%= link_to "list of train and bus", hitme_traffic_list_path %>
+	</div>
+	<div id="disp_link">
+	  <%= link_to "list of train and bus", hitme_traffic_list_path %>
 	</div>
  	<div id="map">
 		<%= image_tag 'testmap_hitme.png', :size=>'600x300' %>
