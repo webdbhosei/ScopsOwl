@@ -1,7 +1,6 @@
 class ChatroomsController < ApplicationController
   before_action :set_chatroom, only: [:show, :edit, :update, :destroy]
 
-
   # GET /chatrooms
   # GET /chatrooms.json
   def index
@@ -12,6 +11,21 @@ class ChatroomsController < ApplicationController
   # GET /chatrooms/1.json
   def show
     @messages=@chatroom.messages.order(created_at: :desc).limit(100).reverse
+  end
+
+  def show_chat
+    @chatroom = Chatroom.find(params[:chatroom_id])
+    session['chat_on'] = @chatroom.id
+    session['chat_title'] = @chatroom.name
+    session['chat_message'] = @chatroom.messages.order(created_at: :desc).limit(100).reverse
+    redirect_to params[:goback_to]
+  end
+
+  def exit_chat
+    session.delete(:chat_on)
+    session.delete(:chat_title)
+    session.delete(:chat_message)
+    redirect_to params[:goback_to]
   end
 
   # GET /chatrooms/new

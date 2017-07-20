@@ -8,6 +8,17 @@ class MessagesController < ApplicationController
     redirect_to @chatroom
     #MessageRelayJob.perform_later(message)
   end
+  def chat_create
+    message_params = {
+      :user => current_user,
+      :chatroom => @chatroom,
+      :body => params['body']
+    }
+    message = Message.new( message_params)
+    message.save
+    session['chat_message'] = @chatroom.messages.order(created_at: :desc).limit(100).reverse
+    redirect_to params[:goback_to]
+  end
   private
     def set_chatroom
       @chatroom=Chatroom.find(params[:chatroom_id])

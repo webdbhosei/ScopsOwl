@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   resources :timetables
+  get 'chatrooms/show_chat'
+  get 'chatrooms/exit_chat'
+
+  post '/messages' => 'messages#chat_create'
   resources :chatrooms do
     resource :chatroom_users
     resources :messages
