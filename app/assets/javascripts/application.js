@@ -48,4 +48,5 @@ $(document).on('click',　function(){
     App.chat.put_message(document.getElementById('body').value);
     return false;
   }
+<<<<<<< 703105636fce0020614f78286c82b0855e40721e
 });*/

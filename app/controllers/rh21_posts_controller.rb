@@ -47,6 +47,8 @@ class Rh21PostsController < ApplicationController
       :rh21_thread_id => params[:post][:thread_id],
       :title => params[:rh21_post][:title],
       :content => @post[:content],
+      :likes => 0,
+      :dislikes => 0,
       :timestamp => Time.now.getutc
     }
     @rh21_post = Rh21Post.new(rh21_post_params)
@@ -83,6 +85,30 @@ class Rh21PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # PATCH/PUT /rh21_posts/update_likes
+  # PATCH/PUT /rh21_posts/update_likes.json
+  def update_likes
+    @post = Rh21Post.find(params[:id])
+    @post.update_attribute :likes, @post.likes + 1
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.js
+    end
+  end
+
+  # PATCH/PUT /rh21_posts/update_dislikes
+  # PATCH/PUT /rh21_posts/update_dislikes.json
+  def update_dislikes
+    @post = Rh21Post.find(params[:id])
+    @post.update_attribute :dislikes, @post.dislikes + 1
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.js
+    end
+  end
+
+  helper_method :update_likes, :update_dislikes
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -22,7 +22,7 @@ class Rh21ThreadsController < ApplicationController
   # GET /rh21_threads/1
   # GET /rh21_threads/1.json
   def show
-    @rh21_posts = Rh21Post.where(rh21_thread_id: Rh21Thread.ids).all
+    @rh21_posts = Rh21Post.where(rh21_thread_id: params[:id]).all
   end
 
   # GET /rh21_threads/new
@@ -83,6 +83,32 @@ class Rh21ThreadsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  def update_likes
+    Rails.logger.warn "update_likes called"
+    params.each do |key,value|
+      Rails.logger.warn "Param #{key}: #{value}"
+    end
+    @post = Rh21Post.find(params[:post_id])
+    @post.update_attribute :likes, @post.likes + 1
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.js
+    end
+  end
+
+  def update_dislikes
+    @post = Rh21Post.find(params[:id])
+    @post.update_attribute :dislikes, @post.dislikes + 1
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.js
+    end
+  end
+
+  helper_method :update_likes, :update_dislikes
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
