@@ -14,20 +14,7 @@
   <% @messages.each do |message| %>
     <%= render message %>
     <% end %>
-  <%= form_for [@chatroom, Message.new], html: {:id=>'body_form'} do |f| %>
-    <%= f.text_area :body, rows: 1, class: "form-control", autofocus: true,
-        :id => "body" %>
+  <%= form_for [@chatroom, Message.new], remote: true do |f| %>
+    <%= f.text_area :body, rows: 1, class: "form-control", autofocus: true %>
   <% end %>
 </div>
-
-<script type="text/javascript">
-  // This script should come after the id is defined.
-  document.getElementById('body').onkeypress =
-    function(e){
-      if ( e && (e.keyCode == 13) )
-      {
-        e.preventDefault();
-        document.getElementById('body_form').submit()
-      }
-    };
-</script>

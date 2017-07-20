@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   get "/eba_answers" => redirect("eba/index")
   get "/eba_questions" => redirect("eba/index")
+  mount ActionCable.server => '/cable'
   resources :eba_answers
   resources :eba_questions do
     member do
