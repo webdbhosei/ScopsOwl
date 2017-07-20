@@ -1,10 +1,53 @@
 <ul class="list-group" style="text-align:center;">
-<% if user_signed_in? %>
-<% current_user.chatrooms.each do |chatroom| %>
-  <li class="list-group-item" style="margin:10px;"><%= link_to chatroom.name, chatroom, data: {behavior: "chatroom-link", chatroom_id: chatroom.id} %></li>
-<% end%>
-<%= link_to 'See all chat rooms', chatrooms_path, class: 'btn btn-default btn-success' %>
-<hr/>
-<%= link_to 'Create New Chatroom', new_chatroom_path, class: 'btn btn-default' %>
-<% end %>
+  <% if user_signed_in? %>
+    <% if session['chat_on'] %>
+      <h2><%= session['chat_title'] %></h4>
+      <% @messages = session[:chat_message] %>
+      <% @chatroom_id = session[:chat_on] %>
+
+      <div data-behavior='messages' data-chatroom-id='<%= @chatroom_id %>' >
+        <% @messages.each do |message| %>
+          <% m = Message.new(message) %>
+          <% if !m.user.handle.nil? %>
+            <%= m.user.handle %>:<%= m.body %><br />
+          <% elsif m.body %>
+            No Name: <%= m.body %><br />
+          <% end %>
+        <% end %>
+        <%= form_tag('/messages', method: 'post', :id=>'rc_body_form' ) do %>
+          <input type="hidden" name="chatroom_id", value="<%= @chatroom_id %>" />
+          <input type="hidden" name="goback_to", value='<%= request.original_url%>' />
+          <%= text_area_tag "body", "", rows: 1, class: "form-control", autofocus: true,
+              :id => "rc_body" %>
+        <% end %>
+      </div>
+
+      <script type="text/javascript">
+        // This script should come after the id is defined.
+        document.getElementById('rc_body').onkeypress =
+          function(e){
+            if ( e && (e.keyCode == 13) )
+            {
+              e.preventDefault();
+              document.getElementById('rc_body_form').submit()
+            }
+          };
+      </script>
+
+
+      <%= link_to "Exit Chat", chatrooms_exit_chat_path( goback_to: request.original_url ) %>
+    <% else %>
+      <% current_user.chatrooms.each do |chatroom| %>
+        <li class="list-group-item" style="margin:10px;">
+          <%= link_to chatroom.name, chatrooms_show_chat_path(
+            chatroom_id: chatroom.id, goback_to: request.original_url
+          ) %>
+          <!--  link_to chatroom.name, chatroom, data: {behavior: "chatroom-link", chatroom_id: chatroom.id} -->
+        </li>
+      <% end%>
+      <%= link_to 'See all chat rooms', chatrooms_path, class: 'btn btn-default btn-success' %>
+      <hr/>
+      <%= link_to 'Create New Chatroom', new_chatroom_path, class: 'btn btn-default' %>
+    <% end %>
+  <% end %>
 </ul>
