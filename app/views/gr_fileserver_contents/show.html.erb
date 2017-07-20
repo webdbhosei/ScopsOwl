@@ -34,7 +34,9 @@
       </div>
       <div class="card-action">
         <a href="/download?id=<%= @gr_fileserver_content.id %>" action="<%= :download %>" >Download</a>
-        <a href="<%= edit_gr_fileserver_content_path(@gr_fileserver_content) %>" >Edit</a>
+        <% if current_user.id == User.find(@gr_fileserver_content.user_id).id %>
+          <a href="<%= edit_gr_fileserver_content_path(@gr_fileserver_content) %>" >Edit</a>
+        <% end %>
         <a href="<%= gr_fileserver_contents_path %>">Back</a>
       </div>
     </div>
