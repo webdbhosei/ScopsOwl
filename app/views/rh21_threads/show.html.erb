@@ -32,9 +32,9 @@
         <br />
         <%= rh21_post.content %>
         <br />
-        <a href="/update_likes?post_id=<%= rh21_post.id %>" action="<%= :update_likes %>" >update_likes</a>
-        <!-- <%= link_to "thumbs up", "#{update_likes}?post_id=#{@rh21_post.id}", :post_id => rh21_post.id, :method => :put, :remote => true, :action => "update_likes" %> -->
+        <a href="/likes?id=<%= rh21_post.id %>" action="<%= :likes %>" >likes</a>
         <i class="material-icons likes">thumb_up</i><%= rh21_post.likes %> | <i class="material-icons">thumb_down</i><%= rh21_post.dislikes %>
+        <a href="/dislikes?id=<%= rh21_post.id %>" action="<%= :dislikes %>" >dislikes</a>
       </div>
     </div>
   <% end %>

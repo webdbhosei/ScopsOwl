@@ -85,12 +85,12 @@ class Rh21ThreadsController < ApplicationController
   end
 
 
-  def update_likes
+  def likes
     Rails.logger.warn "update_likes called"
     params.each do |key,value|
       Rails.logger.warn "Param #{key}: #{value}"
     end
-    @post = Rh21Post.find(params[:post_id])
+    @post = Rh21Post.find(params[:id])
     @post.update_attribute :likes, @post.likes + 1
     respond_to do |format|
       format.html {redirect_to :back}
@@ -98,7 +98,7 @@ class Rh21ThreadsController < ApplicationController
     end
   end
 
-  def update_dislikes
+  def dislikes
     @post = Rh21Post.find(params[:id])
     @post.update_attribute :dislikes, @post.dislikes + 1
     respond_to do |format|
