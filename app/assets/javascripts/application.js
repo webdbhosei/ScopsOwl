@@ -9,11 +9,12 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+//= require turbolinks
 //= require jquery
 //= require jquery_ujs
 //= require materialize-sprockets
 //= require_tree .
+//= require cable
 //$(document).ready(function(){
 (function ($) {
   $(function () {
@@ -42,9 +43,9 @@ $(document).on('click',　function(){
 
 //});
 
-window.addEventListener('load', ()=> {
+/*window.addEventListener('load', ()=> {
   document.getElementById('message').onsubmit = () => {
     App.chat.put_message(document.getElementById('body').value);
     return false;
   }
-});
+});*/
