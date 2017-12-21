@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<% if @gr_fileserver_contents.size == 0 %>
+<% if @gr_fileserver_contents.size == 0 && @gr_fileserver_shared_contents.size == 0 %>
   <div class="row">
     <div class="col s12 m5">
       <div class="card-panel grey darken-1">
@@ -46,11 +46,34 @@
                 <td><%= User.find(gr_fileserver_content.user_id).handle %></td>
                 <td><%= gr_fileserver_content.updated_at %></td>
                 <td class="right-align">
-                  <%= link_to 'Show', gr_fileserver_content %>
-                  <a href="/download?id=<%= gr_fileserver_content.id %>" action="<%= :download %>" >Download</a>
-                  <%= link_to 'Remove', gr_fileserver_content, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Show', gr_fileserver_content, class: "orange-text text-accent-4" %>
+                  <a href="/download?id=<%= gr_fileserver_content.id %>" action="<%= :download %>" class="orange-text text-accent-4" >Download</a>
+                  <%= link_to 'Remove', gr_fileserver_content, method: :delete, data: { confirm: 'Are you sure?' }, class: "orange-text text-accent-4" %>
                 </td>
               </tr>
+            <% end %>
+            <% @gr_fileserver_shared_contents.each do |gr_fileserver_content| %>
+              <% if gr_fileserver_content.user_id != current_user.id %>
+                <tr>
+                  <td><%= gr_fileserver_content.file_name %></td>
+                  <td><%= gr_fileserver_content.file_type %></td>
+                  <td><%= number_to_human_size gr_fileserver_content.file_size, precision: 4 %></td>
+                  <td>
+                    <% if gr_fileserver_content.file_permission == 1 %>
+                      Private
+                    <% else %>
+                      Public
+                    <% end %>
+                  </td>
+                  <td><%= User.find(gr_fileserver_content.user_id).handle %></td>
+                  <td><%= gr_fileserver_content.updated_at %></td>
+                  <td class="right-align">
+                    <%= link_to 'Show', gr_fileserver_content, class: "orange-text text-accent-4" %>
+                    <a href="/download?id=<%= gr_fileserver_content.id %>" action="<%= :download %>" class="orange-text text-accent-4" >Download</a>
+                  </td>
+                </tr>
+
+              <% end %>
             <% end %>
           </tbody>
         </table>

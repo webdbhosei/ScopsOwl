@@ -1,4 +1,6 @@
 class GrFileserverContentsController < ApplicationController
+  include GrFileserverContentsHelper
+  #before_filter :allow_to_current_user_only_on_fileserver, only:[:edit, :update, :destroy]
   before_action :set_gr_fileserver_content, only: [:show, :edit, :update, :destroy, :download]
 
   # GET /gr_fileserver_contents
@@ -14,6 +16,7 @@ class GrFileserverContentsController < ApplicationController
     session[:user] = current_user
 
     @gr_fileserver_contents = GrFileserverContent.where(user_id: current_user.id ).all
+    @gr_fileserver_shared_contents = GrFileserverContent.where(:file_permission => 2 ).all
   end
 
   # GET /gr_fileserver_contents/1
@@ -98,10 +101,11 @@ class GrFileserverContentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_gr_fileserver_content
       @gr_fileserver_content = GrFileserverContent.find(params[:id])
+      @gr_fileserver_shared_contents = GrFileserverContent.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gr_fileserver_content_params
-      params.require(:gr_fileserver_content).permit(:file_content, :file_name, :file_type, :file_size, :file_permission)
+      params.require(:gr_fileserver_content).permit(:file_content, :file_name, :file_type, :file_size, :file_permission, :user_id)
     end
 end
