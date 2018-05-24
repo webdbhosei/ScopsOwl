@@ -47,6 +47,8 @@ Rails.application.routes.draw do
   get 'guterise_fileserver/index'
   get 'gr_fileserver_content/file_content' => 'gr_fileserver_content#file_content'
   get 'download' => 'gr_fileserver_contents#download', :as => 'download'
+  get 'likes' => 'rh21_threads#likes', :as => 'likes'
+  get 'dislikes' => 'rh21_threads#dislikes', :as => 'dislikes'
 
   get 'chat/index'
   post 'chat/index'

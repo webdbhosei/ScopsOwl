@@ -8,8 +8,7 @@
 // compiled file. JavaScript code in this file should be added after the last require_* statement.
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//= require turbolinks
+// about supported directives
 //= require jquery
 //= require jquery_ujs
 //= require materialize-sprockets
@@ -40,6 +39,9 @@ $(document).on('click',　function(){
     $('.scrollspy').scrollSpy();
 });
 
+$(document).ready(function() {
+    $('select').material_select();
+});
 
 //});
 

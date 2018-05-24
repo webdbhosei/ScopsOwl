@@ -121,13 +121,13 @@ ActiveRecord::Schema.define(version: 20170712174146) do
     t.integer  "dislikes"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "user_id"
     t.integer  "rh21_thread_id"
     t.integer  "rh21_status_id"
     t.integer  "rh21_language_id"
-    t.index ["rh21_language_id"], name: "index_rh21_posts_on_rh21_language_id"
-    t.index ["rh21_status_id"], name: "index_rh21_posts_on_rh21_status_id"
-    t.index ["rh21_thread_id"], name: "index_rh21_posts_on_rh21_thread_id"
+    t.integer  "user_id"
+    t.integer  "thread_id"
+    t.integer  "status_id"
+    t.integer  "language_id"
   end
 
   create_table "rh21_roles", force: :cascade do |t|
